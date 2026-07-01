@@ -10,7 +10,7 @@ If a concept is not defined here, it is not part of the architecture yet.
 
 ## Information
 
-Raw data that has not yet been evaluated, verified or connected to other information.
+Any recorded content acquired from a source before it has been evaluated or structured by KOS.
 
 Examples:
 
@@ -53,17 +53,20 @@ Evidence does not create truth.
 
 The same evidence may support competing claims.
 
+Evidence may support or contradict multiple claims.
+
 ---
 
 ## Claim
 
-A statement that can be evaluated.
+A single statement that can be evaluated.
+
+Every claim should represent a single evaluable proposition.
 
 Examples:
 
-"Bitcoin reached a new all-time high."
-
-"The Federal Reserve increased interest rates."
+- "Bitcoin reached a new all-time high."
+- "The Federal Reserve increased interest rates."
 
 Every claim should be traceable to one or more sources.
 
@@ -89,6 +92,8 @@ Examples:
 
 Entities are the primary objects represented by KOS.
 
+Entities have stable identities independent of the information that describes them.
+
 ---
 
 ## Relation
@@ -97,11 +102,12 @@ A meaningful connection between two or more entities or claims.
 
 Examples:
 
-NVIDIA → produces → AI chips
-
-ETF inflows → influence → Bitcoin price
+- NVIDIA → produces → AI chips
+- ETF inflows → influence → Bitcoin price
 
 Relations create structure from information.
+
+Every relation has a defined semantic type.
 
 ---
 
@@ -119,7 +125,7 @@ Context answers questions such as:
 
 ## Confidence
 
-A measurable estimate of how reliable a piece of knowledge is, based on available evidence.
+A measurable estimate of how reliable a claim, relation or derived knowledge is, based on available evidence.
 
 Confidence is never certainty.
 
@@ -142,6 +148,8 @@ Knowledge is our current best understanding.
 ## Analysis
 
 The process of examining knowledge to discover patterns, relationships, inconsistencies or implications.
+
+Analysis consumes knowledge but does not alter its meaning.
 
 Analysis produces insights.
 

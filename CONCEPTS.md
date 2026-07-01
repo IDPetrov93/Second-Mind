@@ -4,18 +4,24 @@ This document defines the official vocabulary of KOS.
 
 Every architectural decision must use these definitions.
 
+If a concept is not defined here, it is not part of the architecture yet.
+
 ---
 
 ## Information
 
-Raw data that has not yet been verified or connected to other knowledge.
+Raw data that has not yet been evaluated, verified or connected to other information.
 
 Examples:
+
 - News article
 - Tweet
 - PDF
 - Video
 - RSS item
+- API response
+
+Information may be true, false or incomplete.
 
 ---
 
@@ -24,6 +30,7 @@ Examples:
 The origin of information.
 
 Examples:
+
 - Reuters
 - SEC
 - Binance Blog
@@ -32,15 +39,19 @@ Examples:
 
 A source is not automatically trustworthy.
 
+One source may produce many pieces of information.
+
 ---
 
 ## Evidence
 
-Information that supports or contradicts a claim.
+Information that supports or contradicts one or more claims.
 
-Evidence increases or decreases confidence.
+Evidence changes confidence.
 
 Evidence does not create truth.
+
+The same evidence may support competing claims.
 
 ---
 
@@ -54,7 +65,9 @@ Examples:
 
 "The Federal Reserve increased interest rates."
 
-Claims can be:
+Every claim should be traceable to one or more sources.
+
+A claim may be:
 
 - supported
 - disputed
@@ -74,7 +87,7 @@ Examples:
 - SEC
 - Jerome Powell
 
-Entities are nodes in the knowledge graph.
+Entities are the primary objects represented by KOS.
 
 ---
 
@@ -88,38 +101,51 @@ NVIDIA → produces → AI chips
 
 ETF inflows → influence → Bitcoin price
 
+Relations create structure from information.
+
 ---
 
 ## Context
 
-Relevant information surrounding a claim.
+Relevant information surrounding a claim, entity or event.
 
-Context answers:
+Context answers questions such as:
 
-Why does this matter?
+- Why does this matter?
+- What happened before?
+- What is connected to it?
+
+---
+
+## Confidence
+
+A measurable estimate of how reliable a piece of knowledge is, based on available evidence.
+
+Confidence is never certainty.
+
+Confidence may increase or decrease over time.
 
 ---
 
 ## Knowledge
 
-Verified and contextualized information.
+Information that has been evaluated, connected to context and assigned a measurable confidence.
 
-Knowledge is not simply stored information.
+Knowledge may later prove incorrect.
 
-Knowledge has:
+Knowledge is not truth.
 
-- source
-- evidence
-- context
-- confidence
+Knowledge is our current best understanding.
 
 ---
 
 ## Analysis
 
-The process of connecting knowledge to identify patterns, trends, inconsistencies or implications.
+The process of examining knowledge to discover patterns, relationships, inconsistencies or implications.
 
-Analysis generates understanding.
+Analysis produces insights.
+
+Understanding belongs to the human.
 
 ---
 
@@ -127,9 +153,11 @@ Analysis generates understanding.
 
 A useful observation produced through analysis.
 
-Insights support human reasoning.
+Insights help humans reason.
 
-Insights are not decisions.
+Insights may be uncertain.
+
+Insights are never decisions.
 
 ---
 
@@ -141,15 +169,32 @@ The KOS Core never makes decisions.
 
 Decision-support systems may exist as optional plugins.
 
-## Pending Concepts
+---
 
-The following concepts are intentionally left undefined:
+## Event
+
+A change occurring at a specific point or period in time.
+
+Events may generate one or more claims.
+
+Events connect entities across time.
+
+---
+
+# Pending Concepts
+
+The following concepts are intentionally left undefined.
+
+They will only be introduced when required by the architecture.
 
 - Memory
 - Reasoning
-- Confidence
-- Event
 - Timeline
 - Workflow
 - Task
 - Observation
+- Fact
+- Document
+- Collection
+- Knowledge Graph
+- Reality Model

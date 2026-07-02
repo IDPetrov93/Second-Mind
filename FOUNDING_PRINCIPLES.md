@@ -14,8 +14,8 @@ Content is a byproduct, not the goal.
 
 ---
 
-## 3. Decisions over Generation
-Correct decisions matter more than output volume.
+## 3. Knowledge over Generation
+Knowledge matter more than output volume.
 
 ---
 

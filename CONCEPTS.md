@@ -205,4 +205,4 @@ They will only be introduced when required by the architecture.
 - Document
 - Collection
 - Knowledge Graph
-- Reality Model
+- Knowledge Quality Model

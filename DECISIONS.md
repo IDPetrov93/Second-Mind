@@ -49,3 +49,9 @@ Accepted
 ## Reason
 
 Technology choices must emerge from architecture rather than define it.
+
+## ADR-004
+
+The primary processing unit of KOS is the Claim.
+
+Documents are only containers of claims.

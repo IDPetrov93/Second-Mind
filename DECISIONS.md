@@ -1,4 +1,4 @@
-# Decision 001
+# ADR 001
 
 Title
 
@@ -16,7 +16,7 @@ Date
 
 01.07.2026
 
-# Decision 002
+# ADR 002
 
 ## Title
 

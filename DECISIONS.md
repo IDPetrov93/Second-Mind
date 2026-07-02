@@ -52,6 +52,22 @@ Technology choices must emerge from architecture rather than define it.
 
 ## ADR-004
 
-The primary processing unit of KOS is the Claim.
+## Title
 
-Documents are only containers of claims.
+The primary processing unit of KOS is not the document.
+
+## Status
+
+Proposed
+
+## Reason
+
+Documents are containers.
+
+Information is extracted from documents.
+
+Claims are evaluated.
+
+Knowledge emerges from evaluated claims.
+
+Therefore documents are transport media, not knowledge objects.

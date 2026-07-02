@@ -45,17 +45,15 @@ One source may produce many pieces of information.
 
 ## Evidence
 
-Information that supports or contradicts one or more claims.
+Evidence is the role that Information plays when it is used to evaluate one or more Claims.
 
-Evidence changes confidence.
+Evidence is contextual.
 
-Evidence does not create truth.
+The same Information may support one Claim, dispute another, or be irrelevant to many others.
 
-The same evidence may support competing claims.
+Evidence influences Confidence.
 
-Evidence may support or contradict multiple claims.
-
----
+Evidence never establishes truth.
 
 ## Claim
 

@@ -1,22 +1,4 @@
-# ADR 001
-
-Title
-
-Human remains the decision maker.
-
-Reason
-
-Core should support thinking rather than replace it.
-
-Status
-
-Accepted
-
-Date
-
-01.07.2026
-
-# ADR 002
+# ADR-001
 
 ## Title
 
@@ -28,14 +10,42 @@ Accepted
 
 ## Reason
 
-The vocabulary of the system must be defined before the architecture.
+Shared vocabulary must exist before architecture.
 
-Every future document must reuse the concepts defined in CONCEPTS.md instead of introducing new terminology.
+Every future document must reuse existing concepts whenever possible.
 
-This reduces ambiguity and keeps the architecture internally consistent.
+---
 
-## Consequences
+# ADR-002
 
-- New concepts require discussion before adoption.
-- Existing concepts should be reused whenever possible.
-- Architecture follows language, not the opposite.
+## Title
+
+Human remains the final decision maker.
+
+## Status
+
+Accepted
+
+## Reason
+
+The KOS Core supports understanding.
+
+It does not make decisions.
+
+Decision-support systems are optional plugins.
+
+---
+
+# ADR-003
+
+## Title
+
+Architecture before implementation.
+
+## Status
+
+Accepted
+
+## Reason
+
+Technology choices must emerge from architecture rather than define it.

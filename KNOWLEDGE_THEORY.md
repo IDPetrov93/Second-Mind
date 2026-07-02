@@ -40,6 +40,10 @@ Knowledge is not reality.
 
 Knowledge is not truth.
 
+Reality exists independently of KOS.
+
+Knowledge is only an internal representation of reality.
+
 Knowledge is the current best representation of reality that KOS can construct using the available information.
 
 As new information becomes available, this representation may improve or degrade.

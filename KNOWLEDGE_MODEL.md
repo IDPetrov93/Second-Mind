@@ -12,6 +12,8 @@ This document defines how those concepts are connected.
 
 It intentionally excludes implementation details, storage technologies and software architecture.
 
+**Note on the entries below:** each concept has a one-line summary for readability, but that summary is not authoritative. CONCEPTS.md is the only source of truth for what a concept means. If this document and CONCEPTS.md ever disagree, CONCEPTS.md wins and this document is out of date (this has already happened twice — see ADR-006 and the Extraction Fidelity addition — hence this note).
+
 ---
 
 # Design Principles
@@ -105,9 +107,11 @@ Information is never automatically considered Knowledge.
 
 ## Claim
 
-Represents one atomic proposition.
+Represents one atomic proposition (see ADR-005).
 
 Every Claim originates from at least one Information object.
+
+Every Claim carries both an Extraction Fidelity value and a Confidence value — these measure different things and are never merged (see ADR-008).
 
 A Claim may reference multiple Entities.
 
@@ -175,9 +179,23 @@ Context enriches understanding but never replaces evidence.
 
 ---
 
+## Event
+
+Represents a change occurring at a specific point or period in time.
+
+An Event may generate one or more Claims.
+
+An Event may connect multiple Entities across time.
+
+Events do not carry independently assigned Confidence. Confidence applies to the Claims an Event generates, not to the Event itself.
+
+---
+
 ## Confidence
 
 Confidence represents the current reliability estimate of a Claim or derived Knowledge.
+
+A Relation's reliability is derived from the Confidence of the Claims and Entities it connects; Relations do not carry independently assigned Confidence (see ADR-006).
 
 Confidence changes as Evidence changes.
 

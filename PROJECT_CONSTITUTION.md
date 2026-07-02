@@ -80,7 +80,15 @@ Prefer open standards.
 
 Avoid vendor lock-in.
 
-Every dependency must justify its existence.
+Every dependency must justify its existence — this applies to documentation as much as to code or libraries.
+
+Core over features. We build systems, not features.
+
+Knowledge over generation. Knowledge matters more than output volume.
+
+Transparency over magic. No black-box behavior without explanation.
+
+Everything is reversible unless proven otherwise. No irreversible architectural decisions without strong justification.
 
 ---
 

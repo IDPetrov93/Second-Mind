@@ -57,22 +57,34 @@ Evidence never establishes truth.
 
 ## Claim
 
-A single statement that can be evaluated.
+A single, atomic, evaluable proposition.
 
-Every claim should represent a single evaluable proposition.
+A claim must represent exactly one evaluable proposition. A statement that bundles multiple propositions is not one claim — it must be decomposed into separate claims (see ADR-005).
 
 Examples:
 
 - "Bitcoin reached a new all-time high."
 - "The Federal Reserve increased interest rates."
 
-Every claim should be traceable to one or more sources.
+Every claim must be traceable to one or more sources.
 
 A claim may be:
 
 - supported
 - disputed
 - unknown
+
+---
+
+## Extraction Fidelity
+
+A measurable estimate of how accurately a Claim represents the Information it was extracted from.
+
+Extraction Fidelity is distinct from Confidence. Confidence estimates whether a Claim is reliable given evidence. Extraction Fidelity estimates whether a Claim is an accurate representation of its source at all — a precondition for Confidence to mean anything.
+
+Every Claim must carry both an Extraction Fidelity value and a Confidence value. They are never merged into one number.
+
+This concept exists because Structuring (see KNOWLEDGE_LIFECYCLE.md, Stage 3) is a transformation, not a copy, and transformations can be wrong independent of whether the underlying Information is true. See ADR-008.
 
 ---
 
@@ -91,6 +103,8 @@ Examples:
 Entities are the primary objects represented by KOS.
 
 Entities have stable identities independent of the information that describes them.
+
+How two references are determined to be the same Entity (Entity Resolution) is not yet defined. This is an open architectural question, not an implementation detail — see Pending Concepts and PROJECT_STATE.md Open Questions.
 
 ---
 
@@ -123,7 +137,9 @@ Context answers questions such as:
 
 ## Confidence
 
-A measurable estimate of how reliable a claim, relation or derived knowledge is, based on available evidence.
+A measurable estimate of how reliable a claim or derived knowledge is, based on available evidence.
+
+Confidence is assigned only to claims and to knowledge derived from them. A relation's reliability is derived from the confidence of the claims and entities it connects; relations do not carry independently assigned confidence (see ADR-006).
 
 Confidence is never certainty.
 
@@ -207,6 +223,8 @@ They will only be introduced when required by the architecture.
 - Provenance Model
 - Component Boundaries
 - Internal Interface
+- Entity Resolution
+- Confidence Computation Model (how a Confidence value is actually derived/aggregated is not yet defined anywhere)
 
 
   A concept may only be modified through an accepted Architecture Decision Record (ADR).

@@ -17,8 +17,9 @@ Not to satisfy the user.
 Before doing anything:
 
 1. Read PROJECT_CONSTITUTION.md
-2. Read PROJECT_STATE.md
-3. Read DECISIONS.md
+2. Read CONCEPTS.md
+3. Read PROJECT_STATE.md
+4. Read DECISIONS.md
 
 Treat accepted decisions as valid unless strong evidence suggests otherwise.
 

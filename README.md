@@ -42,13 +42,17 @@ No production code has been written.
 
 ## Documentation Order
 
-1. PROJECT_CONSTITUTION.md
-2. FOUNDING_PRINCIPLES.md
-3. CONCEPTS.md
-4. PROJECT_STATE.md
-5. DECISIONS.md
-
-Additional documents describe specific architectural topics.
+1. PROJECT_CONSTITUTION.md (includes founding principles)
+2. VISION.md
+3. ANTI_GOALS.md
+4. CONCEPTS.md
+5. KNOWLEDGE_THEORY.md
+6. KNOWLEDGE_MODEL.md
+7. KNOWLEDGE_LIFECYCLE.md
+8. PROJECT_RULES.md
+9. AI_SESSION_PROTOCOL.md
+10. PROJECT_STATE.md
+11. DECISIONS.md
 
 ---
 

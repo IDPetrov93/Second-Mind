@@ -2,237 +2,244 @@
 
 ## Purpose
 
-This document defines how KOS internally represents knowledge.
+This document defines the conceptual structure used by KOS to represent knowledge.
 
-It does not define storage, databases or implementation details.
+The meaning of Knowledge is defined in **KNOWLEDGE_THEORY.md**.
 
-It defines the conceptual model that every component of the Core must use.
+The official terminology is defined in **CONCEPTS.md**.
 
-The Knowledge Model is independent of programming language, database technology and infrastructure.
+This document defines how those concepts are connected.
 
----
-
-# Principles
-
-## Representation over Reality
-
-KOS does not model reality.
-
-KOS models the current best representation of reality based on available knowledge.
-
-The model is expected to evolve as new information and evidence become available.
+It intentionally excludes implementation details, storage technologies and software architecture.
 
 ---
 
-## Knowledge is Derived
+# Design Principles
 
-Knowledge is never directly collected.
+## Conceptual Independence
 
-Knowledge is derived from information through evaluation, contextualization and confidence assessment.
+The Knowledge Model is independent of:
+
+- programming languages
+- databases
+- storage engines
+- APIs
+- network protocols
+- user interfaces
+
+The model describes concepts, not implementation.
+
+---
+
+## Structural Consistency
+
+Every concept has a single responsibility.
+
+Relationships between concepts define the structure of knowledge.
+
+No concept may redefine another concept.
 
 ---
 
 ## Traceability
 
-Every element of knowledge must be traceable.
+Every connection inside the model must remain traceable.
 
-A human must always be able to answer:
-
-- Where did this come from?
-- Which source produced it?
-- Which evidence supports it?
-- Why is its confidence what it is?
-
-Knowledge without provenance is invalid.
+No derived knowledge may exist without an explainable chain of relationships.
 
 ---
 
 ## Immutability
 
-Original information is never modified.
+Original Information is immutable.
 
-Evaluation may change.
+Derived structures may evolve.
 
 Confidence may change.
 
-Relationships may change.
+Relations may change.
 
-Insights may change.
+Knowledge may evolve.
 
-The original information remains unchanged.
-
----
-
-## Separation of Concepts
-
-Each concept has a single responsibility.
-
-Information is not Knowledge.
-
-Evidence is not Truth.
-
-Knowledge is not Reality.
-
-Insight is not Decision.
-
-The architecture must never merge these concepts.
+Original Information never changes.
 
 ---
 
 # Conceptual Structure
 
-The Knowledge Model is composed of interconnected concepts defined in CONCEPTS.md.
+The Knowledge Model is a connected network of concepts.
 
-The model does not introduce additional concepts.
+Knowledge emerges from the relationships between concepts rather than from isolated objects.
 
-The relationships between concepts define the structure of knowledge.
+The model intentionally avoids defining processing order.
 
-A simplified conceptual flow is:
-
-Source
-
-↓
-
-Information
-
-↓
-
-Claim
-
-↓
-
-Evidence
-
-↓
-
-Confidence
-
-↓
-
-Knowledge
-
-↓
-
-Analysis
-
-↓
-
-Insight
+Processing is defined by the Core architecture.
 
 ---
 
-# Core Invariants
-
-The following rules must always hold.
+# Concept Relationships
 
 ## Source
 
-Every piece of Information originates from exactly one Source.
+Produces Information.
+
+One Source may produce many Information objects.
 
 ---
 
 ## Information
 
-Information may contain zero or more Claims.
+Originates from exactly one Source.
 
-Information may later prove to be incorrect.
+May contain:
+
+- Claims
+- Entity references
+- Context
+
+Information is immutable.
+
+Information is never automatically considered Knowledge.
 
 ---
 
 ## Claim
 
-Every Claim must be traceable to at least one Source.
+Represents one atomic proposition.
+
+Every Claim originates from at least one Information object.
 
 A Claim may reference multiple Entities.
 
-A Claim may be supported or disputed by multiple pieces of Evidence.
+A Claim may participate in multiple Relations.
 
 ---
 
 ## Evidence
 
+Evidence is not a standalone object.
+
+Evidence is the role that Information plays when it is used to evaluate one or more Claims.
+
+The same Information may:
+
+- support multiple Claims
+- dispute multiple Claims
+- remain unrelated to many Claims
+
+Evidence influences Confidence.
+
 Evidence never establishes truth.
-
-Evidence only changes confidence.
-
-Evidence may support multiple Claims.
 
 ---
 
 ## Entity
 
-Entities have stable identities.
+Represents a uniquely identifiable object.
 
-Different sources may describe the same Entity differently.
+Entity identity remains stable even when represented differently by multiple sources.
 
-Identity must remain independent from representation.
+Entities may participate in many Relations.
 
 ---
 
 ## Relation
 
+Relations connect concepts.
+
 Every Relation has a defined semantic type.
 
-Relations may connect:
+Examples include:
 
 - Entity → Entity
-- Claim → Claim
-- Entity → Claim
 - Claim → Entity
+- Claim → Claim
+- Information → Claim
+
+Relations define the structure of the Knowledge Model.
+
+---
+
+## Context
+
+Provides additional meaning for interpreting Claims and Knowledge.
+
+Context may include:
+
+- temporal information
+- related entities
+- related claims
+- surrounding events
+
+Context enriches understanding but never replaces evidence.
 
 ---
 
 ## Confidence
 
-Confidence is dynamic.
+Confidence represents the current reliability estimate of a Claim or derived Knowledge.
 
-Confidence may increase or decrease over time.
+Confidence changes as Evidence changes.
 
-Confidence is never interpreted as certainty.
+Confidence is never certainty.
 
 ---
 
 ## Knowledge
 
-Knowledge is always derived.
+Knowledge is the structured representation produced by connecting Claims, Entities, Relations, Context and Confidence.
 
-Knowledge is never accepted without traceability.
+The meaning of Knowledge is defined in **KNOWLEDGE_THEORY.md**.
 
-Knowledge may become obsolete.
+---
+
+## Analysis
+
+Analysis operates on Knowledge.
+
+Analysis discovers:
+
+- patterns
+- inconsistencies
+- implications
+- relationships
+
+Analysis never modifies original Information.
 
 ---
 
 ## Insight
 
-Insights are derived from Analysis.
+Insights are produced through Analysis.
 
 Insights assist human reasoning.
 
-Insights never trigger actions.
+Insights never become Decisions.
 
 ---
 
 # Model Constraints
 
-The Knowledge Model intentionally avoids defining:
+The Knowledge Model does not define:
 
-- storage format
-- database schema
+- processing pipelines
+- software components
+- databases
 - APIs
-- network protocols
-- user interfaces
 - implementation technologies
 
-These belong to later architectural documents.
+Those belong to later architectural documents.
 
 ---
 
-# Architectural Consequences
+# Architectural Rules
 
-All Core components must operate on this model.
+Every Core component must operate using this model.
 
-No component may redefine the meaning of concepts established in CONCEPTS.md.
+No component may redefine concepts defined in **CONCEPTS.md**.
 
-New concepts require updates to CONCEPTS.md before they may be used by the architecture.
+No component may redefine the meaning of Knowledge defined in **KNOWLEDGE_THEORY.md**.
 
-Implementation decisions must preserve the semantics defined by this model.
+New concepts must first be introduced in **CONCEPTS.md** before they may be used anywhere else.
+
+Implementation choices must preserve the semantics defined by this model.

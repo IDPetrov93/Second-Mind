@@ -206,4 +206,7 @@ They will only be introduced when required by the architecture.
 - Knowledge Quality Model
 - Provenance Model
 - Component Boundaries
-- Internal Interface 
+- Internal Interface
+
+
+  A concept may only be modified through an accepted Architecture Decision Record (ADR).

@@ -204,3 +204,6 @@ They will only be introduced when required by the architecture.
 - Collection
 - Knowledge Graph
 - Knowledge Quality Model
+- Provenance Model
+- Component Boundaries
+- Internal Interface 

@@ -2,13 +2,15 @@
 
 ## Current Phase
 
-Foundation
+Phase 1 — Foundation
 
 ---
 
 ## Current Status
 
-Conceptual architecture in progress.
+The conceptual foundation of KOS has been established.
+
+Core documents have been created and reviewed.
 
 No implementation has started.
 
@@ -16,43 +18,48 @@ No implementation has started.
 
 ## Completed
 
-- Vision
-- Constitution
+- README
+- Project Constitution
 - Founding Principles
 - Project Rules
 - Concepts
 - Knowledge Theory
 - Knowledge Model
 - Knowledge Lifecycle
+- AI Session Protocol
 
 ---
 
 ## Current Objective
 
-Define the Core Architecture.
+Design how information flows through KOS.
 
 ---
 
-## Next Milestone
+## Next Task
 
-Architecture Review v1
+Define the Information Processing Pipeline.
 
 ---
 
 ## Open Questions
 
-- How should confidence evolve over time?
-- How should conflicting evidence be represented?
+- How should confidence evolve?
+- How should conflicting claims coexist?
 - Should knowledge be immutable?
 
 ---
 
 ## Known Risks
 
-Avoid introducing implementation details before architecture is stable.
+Premature implementation.
+
+Premature technology selection.
+
+Overengineering.
 
 ---
 
 ## Last Updated
 
-2026-07-01
+2026-07-02

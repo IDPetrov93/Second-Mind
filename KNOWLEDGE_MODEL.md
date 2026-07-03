@@ -187,6 +187,7 @@ Examples include:
 - Entity → Entity
 - Claim → Entity
 - Claim → Claim
+- Event → Event (sequence of related, discrete Events)
 
 Relations define the structure of the Knowledge Model.
 
@@ -217,9 +218,9 @@ An Event may connect multiple Entities across time.
 
 Events do not carry independently assigned Confidence. Confidence applies to the Claims an Event generates, not to the Event itself.
 
-Topical similarity between Claims does not imply they belong to the same Event. Event Resolution — how a Claim is anchored to a specific Event — is not yet defined (see CONCEPTS.md, Pending Concepts, and ADR-015).
+Topical similarity between Claims does not imply they belong to the same Event.
 
-An Event may be punctual or an evolving process observed at multiple points in time; telling these apart is also part of the undefined Event Resolution problem (see ADR-018).
+Event Resolution: two Claims are anchored to the same Event only if they trace, through Provenance/Attribution, to the same Primary Document (or the same direct Observation). Different Primary Documents mean different Events, even within the same unfolding situation. Continuity across related Events is expressed via Relation (Event → follows → Event), not by treating them as one Event (see CONCEPTS.md, ADR-020 — this supersedes the punctual-vs-process framing in ADR-018).
 
 ---
 

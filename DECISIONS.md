@@ -473,3 +473,36 @@ This ADR does not introduce a new concept — it clarifies the existing scope of
 
 - CONCEPTS.md updated with one clarifying sentence.
 - This walkthrough is recorded as a validating result, not just a gap report — it's worth noting in PROJECT_STATE.md that not every real-world test needs to produce a new architectural concept; this one mostly confirmed prior fixes were sound.
+
+---
+
+# ADR-020
+
+## Title
+
+Event Resolution is resolved: Event identity is anchored to a Primary Document.
+
+## Status
+
+Accepted
+
+## Reason
+
+ADR-015 required Event anchoring but left the mechanism undefined. ADR-018 observed that some Events look "evolving" rather than punctual (the Canada pipeline policy story, restated across five months) and treated this as a property Event Resolution would need to handle as a special case.
+
+On reexamination, the "evolving process Event" framing was the wrong model, not a harder version of the right one. KOS already has a structural distinction — Primary vs. Secondary Source (ADR-014) — that solves this cleanly without inventing new machinery:
+
+Two Claims are anchored to the same Event if and only if they trace, through Provenance/Attribution, to the same Primary Document (or the same direct Observation, where no Document intervenes). Different Primary Documents mean different Events, full stop — even if they're part of the same unfolding situation, share every Entity involved, and one explicitly follows from the other.
+
+What ADR-018 called an "evolving process Event" is, under this rule, correctly modeled as a sequence of several discrete, punctual Events — one per genuine Primary artifact — connected to each other by Relation (Event → follows → Event, extending Relation to cover Events, not only Entities and Claims). This is simpler than maintaining two kinds of Event, and it reuses a concept (Primary/Secondary Source) the architecture already needed for other reasons, rather than adding new apparatus. It directly follows the Constitution's engineering principle of simplicity before cleverness.
+
+This supersedes ADR-018's framing. ADR-018 is not reverted — the problem it identified (Canada walkthrough) was real — but the fix is this ADR, not "Event has two kinds."
+
+This does not fully close every case. Where two genuinely independent Primary Sources both directly document the same real-world occurrence with no Document-to-Document link between them (e.g. two government agencies each issuing their own statement about one incident), this rule will incorrectly treat them as two different Events. This is a real, smaller gap, renamed Independent Multi-Primary Corroboration and kept in Pending Concepts, rather than papered over. It is a narrower problem than the one this ADR closes: it only applies when no document lineage connects the accounts at all, which is the less common case for the kinds of claims KOS is built to process (regulatory filings, corporate announcements, reported news) — most of which do have exactly one triggering Primary artifact.
+
+## Consequences
+
+- CONCEPTS.md, KNOWLEDGE_MODEL.md and INFORMATION_PIPELINE.md updated. Event Resolution removed from Pending Concepts as resolved.
+- Relation's scope widened to include Event → Event connections.
+- Independent Multi-Primary Corroboration added to Pending Concepts as a narrower, separate remaining gap.
+- Of the five Resolution-type gaps named across this project (Entity Resolution, Event Resolution, Attribution Discovery, Confidence Computation Model, Citation Fidelity Computation Model), this is the first to reach Accepted status rather than staying Proposed or Pending.

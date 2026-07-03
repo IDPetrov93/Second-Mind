@@ -133,7 +133,7 @@ Where the originating Document carries an Attribution, it must also receive a **
 
 Claims become independently evaluable.
 
-Where a Claim describes something occurring at a specific point or period in time, it must be anchored to an Event (see CONCEPTS.md, Event). Anchoring is not automatic from topic similarity — two claims about a similar topic are not the same Event unless established as such (Event Resolution, not yet defined — see ADR-015).
+Where a Claim describes something occurring at a specific point or period in time, it must be anchored to an Event (see CONCEPTS.md, Event). Anchoring rule: a Claim is anchored to the same Event as another Claim only if both trace, through Provenance/Attribution, to the same Primary Document. A Claim tracing to a different Primary Document is a different Event, even on the same topic (Event Resolution, see ADR-020).
 
 ---
 
@@ -165,7 +165,7 @@ Evidence is attached to Claims.
 
 Documents connected by Attribution to the same origin must not be counted as independent evidence — they are echoes (see ADR-014).
 
-Claims anchored to different Events must not be treated as corroborating or duplicate evidence for each other, even when topically similar (see ADR-015).
+Claims anchored to different Events must not be treated as corroborating or duplicate evidence for each other, even when topically similar (see ADR-020). Where related Events form a sequence (e.g. an unfolding policy direction), that continuity is a Relation between Events, not shared Evidence.
 
 ---
 

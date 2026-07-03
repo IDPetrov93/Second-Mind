@@ -85,12 +85,13 @@ How two references are determined to be the same Entity (Entity Resolution) is n
 
 ## Relation
 
-A meaningful connection between two or more entities or claims.
+A meaningful connection between two or more entities, claims, or events.
 
 Examples:
 
 - NVIDIA → produces → AI chips
 - ETF inflows → influence → Bitcoin price
+- Event → follows → Event (connecting a sequence of related, discrete Events — see Event, ADR-020)
 
 Relations create structure from information.
 
@@ -178,9 +179,15 @@ Events may generate one or more claims.
 
 Events connect entities across time.
 
-Two claims describing similar content are not automatically the same Event. Topical similarity does not imply Event identity — a claim about a Primary filing in April and a claim about a Public filing in July may describe the same ongoing process without being the same Event, or may be genuinely distinct events. How Claims are anchored to a specific Event (Event Resolution) is not yet defined (see Pending Concepts, and ADR-015).
+Two claims describing similar content are not automatically the same Event. Topical similarity does not imply Event identity.
 
-An Event may be punctual (a single, discrete occurrence) or may represent an evolving process observed at multiple points in time (a policy direction restated and advanced over months). Event Resolution must be able to tell whether a new Claim reports a genuinely new Event, or is a new observation of an already-known, still-unfolding Event — these require different handling and neither can be assumed by default (see ADR-018).
+**Event Resolution:** two Claims are anchored to the same Event if and only if they trace, through Provenance and Attribution, to the same Primary Document (or, where no Document intervenes, the same direct Observation). If two Claims trace to different Primary Documents, they are different Events — even if they share Entities, wording, or theme, and even if one Primary Document explicitly follows another as part of the same unfolding situation. See ADR-020.
+
+This resolves the punctual-vs-process ambiguity raised in ADR-018: what looks like one "evolving process" Event (e.g. a policy direction restated over months) is not a single fuzzy Event. It is a sequence of discrete, punctual Events — one per genuine Primary artifact (each filing, each official statement, each regulatory action) — connected to each other through Relations (e.g. Event → follows → Event) because they share Entities and a common thread, not because they are the same Event. Event itself stays punctual by definition; continuity is represented structurally, not by stretching what an Event is.
+
+A Claim that does not describe something occurring at a specific point in time (a general statement, an opinion, an atemporal fact) does not require Event anchoring at all.
+
+**Known remaining gap:** where two genuinely independent Primary Sources both directly document the same real-world occurrence with no Document-to-Document link between them (e.g. two agencies issuing separate statements about one incident, or independent eyewitnesses), Primary-Document anchoring will treat them as two different Events even though a human would consider them the same one. This is narrower than the original problem — it only applies when no document lineage connects the accounts — and is left as an explicit, smaller open item rather than solved here (see Pending Concepts: Independent Multi-Primary Corroboration).
 
 ---
 
@@ -328,7 +335,7 @@ They will only be introduced when required by the architecture.
 - Component Boundaries
 - Internal Interface
 - Entity Resolution
-- Event Resolution (how a Claim is anchored to a specific Event, and how two claims are determined to describe the same vs. a different Event — including punctual vs. evolving-process Events — is not yet defined — see ADR-015, ADR-018)
+- Independent Multi-Primary Corroboration (when two independent Primary Sources document the same real-world occurrence with no Document-to-Document link between them, Event Resolution's Primary-Document anchoring cannot yet tell they're the same Event — narrower than the original Event Resolution problem, see ADR-020)
 - Attribution Discovery (how KOS determines that a Document cites or derives from another Document is not yet defined — see ADR-017)
 - Confidence Computation Model (how a Confidence value is actually derived/aggregated is not yet defined anywhere; it must account for Attribution-linked echoes, see ADR-014)
 - Citation Fidelity Computation Model (how Citation Fidelity is actually measured is not yet defined — see ADR-016)

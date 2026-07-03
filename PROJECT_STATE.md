@@ -36,7 +36,7 @@ No implementation has started.
 - Event anchoring requirement added; Event Resolution named as an open gap (ADR-015, Proposed)
 - Citation Fidelity introduced, distinct from Extraction Fidelity and Source trust (ADR-016)
 - Attribution Discovery named as unresolved (ADR-017, Proposed)
-- Event Resolution scope widened to cover punctual vs. evolving-process Events (ADR-018, Proposed)
+- Event Resolution scope widened to cover punctual vs. evolving-process Events (ADR-018, Proposed), then fully resolved by anchoring Event identity to Primary Document (ADR-020, Accepted) — superseding ADR-018's framing
 - Extraction Fidelity scope clarified to cover entity/subject misattribution (ADR-019, from a fourth walkthrough — Binance/Philippines — that mostly validated prior fixes rather than finding a new hole)
 
 ---
@@ -53,7 +53,7 @@ Phase 1 is complete when all of the following hold:
 
 - Every concept used in any document is defined in CONCEPTS.md and nowhere contradicted (no repeat of the ADR-006-style drift). **Still recurring — this exact drift happened twice more this session (ADR-013's Information/Document duplication, ADR-014's silent Attribution regression). Treat this criterion as failing until a session passes without a new instance.**
 - The Information Processing Pipeline has been walked through manually against at least one real, non-trivial piece of Information end-to-end — not just described abstractly. A clean textbook example does not count. **In progress: four walkthroughs done — OpenAI/FT stake report, Jersey Mike's IPO filing, Canada oil pipeline announcement (all 2026-07-03 or 07-02), and Binance/Philippines sandbox approval (2026-07-03). The first three each produced new architecture (ADR-014 through ADR-018); the fourth mostly validated those fixes and needed only a small clarification (ADR-019). That's the first sign of convergence — worth one or two more before treating this criterion as met.**
-- Entity Resolution has moved from Proposed (ADR-009) to an accepted approach, or an explicit decision to defer it into Phase 2 has been made and justified. **Still open. Event Resolution (ADR-015) joins it as a second, structurally similar open gap.**
+- Entity Resolution has moved from Proposed (ADR-009) to an accepted approach, or an explicit decision to defer it into Phase 2 has been made and justified. **Still open.** Event Resolution, which joined it as a structurally similar gap, **is now resolved (ADR-020)** — anchored to Primary Document, with one narrower remaining edge case (Independent Multi-Primary Corroboration).
 - Extraction Fidelity (ADR-008) has at least a conceptual definition of how it is produced, even if not how it is computed numerically. **Still open.**
 - The Confidence Computation Model gap has been either resolved or explicitly deferred with a stated reason. **Still open, and now has an additional hard requirement: it must account for Attribution-linked echoes (ADR-014).**
 
@@ -63,7 +63,7 @@ Until these hold, further pure concept-refinement sessions should be treated wit
 
 ## Next Task
 
-Continue walking INFORMATION_PIPELINE.md manually against further real, non-trivial examples — ideally ones likely to stress Entity Resolution or Confidence Computation next, since Attribution and Event anchoring are now at least structurally addressed. Before that, consider: is a third walkthrough the highest-value next step, or has enough evidence accumulated to instead resolve one of the four still-open Pending Concepts (Entity Resolution, Event Resolution, Extraction Fidelity computation, Confidence Computation Model) directly?
+Continue walking INFORMATION_PIPELINE.md manually against further real, non-trivial examples, or resolve another of the remaining open gaps directly (Entity Resolution, Attribution Discovery, Confidence Computation Model, Citation Fidelity Computation Model — Event Resolution is now closed, ADR-020).
 
 ---
 
@@ -75,12 +75,11 @@ Continue walking INFORMATION_PIPELINE.md manually against further real, non-triv
 - Should Claims themselves be immutable once created (append-only, with only Confidence changing), or can a Claim be edited? (surfaced by ADR-005; a real example of a source issuing a post-publication correction was observed during the Jersey Mike's walkthrough — this is not hypothetical)
 - Is derived-only Relation confidence (ADR-006) sufficient, or will some relation types need an independent reliability signal?
 - How is Entity Resolution actually performed? (ADR-009, open)
-- How is Event Resolution actually performed — i.e. when do two claims describe the same real-world Event vs. two distinct ones? (ADR-015, open)
+- How is Event Resolution actually performed — i.e. when do two claims describe the same real-world Event vs. two distinct ones? **Resolved: anchored to Primary Document (ADR-020).** Remaining narrower question: how should Independent Multi-Primary Corroboration be handled (two independent Primary Sources, no document link, same real occurrence)?
 - How is Extraction Fidelity actually computed? (ADR-008, open)
 - How is a Confidence value actually computed or aggregated, and how must it discount Attribution-linked echoes? No document defines this. (ADR-014)
 - How is Attribution actually discovered/detected, not just recorded? (ADR-017, open)
 - How is Citation Fidelity actually measured? (ADR-016, open)
-- How does Event Resolution tell a new Event apart from a new observation of an ongoing, evolving-process Event? (ADR-018, open)
 
 ---
 
@@ -100,4 +99,4 @@ Silent regression during restructuring — a restructuring pass can drop a conce
 
 ## Last Updated
 
-2026-07-03 (session 4 continued — Citation Fidelity, Attribution Discovery, Event Resolution widened; ADR-016 through ADR-018)
+2026-07-03 (session 4 continued — Event Resolution resolved end-to-end, ADR-020; first of five Resolution-type gaps to reach Accepted)

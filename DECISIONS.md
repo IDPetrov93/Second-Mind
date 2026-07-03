@@ -56,25 +56,55 @@ Technology choices must emerge from architecture rather than define it.
 
 ## Title
 
-The primary processing unit of KOS is not the document.
+Statements precede Claims.
 
 ## Status
 
 Accepted
 
-## Reason
+---
 
-Documents are containers.
+## Context
 
-Information is extracted from documents.
+Documents are containers of information.
 
-Claims are evaluated.
+Documents themselves cannot be evaluated.
 
-Knowledge emerges from evaluated claims.
+Before any claim can be verified, KOS must first identify the original statements contained within a document.
 
-Therefore documents are transport media, not knowledge objects.
+Statements preserve the original meaning and wording.
+
+Claims are structured representations extracted from statements.
 
 ---
+
+## Decision
+
+The primary processing flow shall be:
+
+Document
+
+↓
+
+Statement
+
+↓
+
+Claim
+
+Statements become immutable historical records.
+
+Claims become the primary evaluation objects.
+
+---
+
+## Consequences
+
+- Documents are containers.
+- Statements preserve provenance.
+- Claims may be generated from one or more statements.
+- One statement may produce multiple claims.
+- Evidence is attached to claims, not documents.
 
 # ADR-005
 

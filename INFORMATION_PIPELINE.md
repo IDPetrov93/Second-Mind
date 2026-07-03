@@ -2,15 +2,11 @@
 
 ## Purpose
 
-This document defines how KOS transforms observations into structured knowledge.
+Describe how observations become knowledge.
 
-The pipeline describes logical transformations only.
-
-Implementation details are intentionally excluded.
+The pipeline defines logical transformations only.
 
 ---
-
-# Pipeline
 
 Reality
 
@@ -24,7 +20,7 @@ Document Registration
 
 ↓
 
-Information Normalization
+Normalization
 
 ↓
 
@@ -48,7 +44,7 @@ Evaluation
 
 ↓
 
-Knowledge
+Knowledge Update
 
 ↓
 
@@ -66,185 +62,94 @@ Human
 
 ## Stage 1 — Observation
 
-Input
+Observe potentially relevant information.
 
-External reality.
-
-Output
-
-Observed document.
-
-Purpose
-
-Detect potentially relevant information.
-
-No interpretation occurs.
+No interpretation.
 
 ---
 
 ## Stage 2 — Document Registration
 
-Input
+Register immutable document.
 
-Observed document.
+Assign:
 
-Output
-
-Registered document with metadata.
-
-Metadata includes:
-
+- Document ID
 - Source
 - Timestamp
-- URL
-- Media Type
 - Language
 - Hash
 
-Purpose
-
-Create an immutable historical record.
-
-The document itself is never modified.
-
 ---
 
-## Stage 3 — Information Normalization
+## Stage 3 — Normalization
 
-Input
+Convert into common internal representation.
 
-Registered document.
-
-Output
-
-Normalized textual representation.
-
-Purpose
-
-Convert information into a common internal format.
-
-No semantic interpretation occurs.
+No semantic changes.
 
 ---
 
 ## Stage 4 — Statement Extraction
 
-Input
+Extract immutable statements.
 
-Normalized information.
+Statements preserve original wording.
 
-Output
-
-Individual statements.
-
-Purpose
-
-Separate direct observations from quotations.
-
-A statement may represent:
-
-- Author statement
-- Quoted speech
-- Numerical value
-- Caption
-- Title
-
-Statements preserve their original wording.
+Statements maintain provenance.
 
 ---
 
 ## Stage 5 — Claim Extraction
 
-Input
+Convert statements into structured claims.
 
-Statements.
+One statement may produce:
 
-Output
+- zero claims
+- one claim
+- many claims
 
-Atomic claims.
-
-Purpose
-
-Convert statements into independently evaluable claims.
-
-One statement may generate zero, one or many claims.
+Claims become independently evaluable.
 
 ---
 
 ## Stage 6 — Claim Classification
 
-Input
+Assign semantic categories.
 
-Claims.
+Examples:
 
-Output
-
-Typed claims.
-
-Possible categories include:
-
-- Factual
 - Financial
 - Political
 - Scientific
-- Legal
 - Opinion
+- Legal
 - Prediction
-- Historical
 
-A claim may belong to multiple categories.
+Multiple categories are allowed.
 
 ---
 
 ## Stage 7 — Evidence Collection
 
-Input
+Search supporting and contradicting evidence.
 
-Typed claims.
-
-Output
-
-Claims linked to supporting and contradicting evidence.
-
-Purpose
-
-Collect all relevant evidence.
-
-Evidence never determines truth.
+Evidence is never discarded.
 
 ---
 
 ## Stage 8 — Evaluation
 
-Input
+Estimate confidence.
 
-Claims with evidence.
-
-Output
-
-Confidence assessment.
-
-Purpose
-
-Estimate confidence using available evidence.
-
-Confidence is never certainty.
+Evaluation never determines truth.
 
 ---
 
-## Stage 9 — Knowledge
+## Stage 9 — Knowledge Update
 
-Input
-
-Evaluated claims.
-
-Output
-
-Knowledge objects.
-
-Purpose
-
-Represent the current best understanding.
+Create or update knowledge objects.
 
 Knowledge remains revisable.
 
@@ -252,33 +157,13 @@ Knowledge remains revisable.
 
 ## Stage 10 — Analysis
 
-Input
-
-Knowledge.
-
-Output
-
-Patterns, relationships and inconsistencies.
-
-Purpose
-
-Generate higher-level understanding.
+Identify patterns, relations and inconsistencies.
 
 ---
 
 ## Stage 11 — Insight
 
-Input
-
-Analysis.
-
-Output
-
-Human-readable insights.
-
-Purpose
-
-Support human reasoning.
+Generate observations useful for human reasoning.
 
 Insights never become decisions.
 
@@ -288,12 +173,10 @@ Insights never become decisions.
 
 Documents are immutable.
 
-Statements preserve original wording.
+Statements are immutable.
 
-Claims are the primary processing unit.
-
-Evidence is linked to claims.
+Claims are evaluable.
 
 Knowledge is revisable.
 
-Humans remain responsible for decisions.
+Everything remains traceable.

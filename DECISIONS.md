@@ -550,3 +550,50 @@ Mentioning two entities in the same Statement does not establish a relationship.
 Unknown relationships remain unknown.
 
 Future Evidence may strengthen or create relationships.
+
+---
+
+# ADR-011
+
+## Title
+
+Claim Validation Depends on Claim Type
+
+## Status
+
+Accepted
+
+---
+
+## Context
+
+Not all Claims can be evaluated using the same validation process.
+
+A factual Claim can often be verified through supporting or contradicting evidence.
+
+Predictions, warnings and recommendations require different validation approaches.
+
+---
+
+## Decision
+
+Every Claim shall define its Validation Strategy.
+
+Validation Strategy depends on Claim Classification.
+
+Examples include:
+
+- Evidence Comparison
+- Future Outcome Tracking
+- Regulatory Verification
+- Scientific Verification
+
+The Validation Strategy is independent from Confidence.
+
+---
+
+## Consequences
+
+Evaluation becomes extensible.
+
+New Claim types may introduce new Validation Strategies without changing the processing pipeline.

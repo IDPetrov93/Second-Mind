@@ -241,6 +241,51 @@ Facts exist independently of KOS.
 KOS never stores facts directly.
 
 KOS stores knowledge with varying confidence about facts.
+
+## Statement
+
+The smallest immutable linguistic unit extracted from a document.
+
+A statement preserves the original wording.
+
+Statements may contain zero, one or multiple claims.
+
+Statements are never modified.
+
+Examples:
+
+"We generated $1.4 billion from crypto."
+
+"There is nothing illegal."
+
+---
+
+## Claim
+
+A structured representation of one or more assertions extracted from statements.
+
+Claims are independently evaluable.
+
+Claims may be supported or contradicted by evidence.
+
+Claims may evolve as new evidence becomes available.
+
+Claims are not knowledge.
+
+---
+
+## Provenance
+
+The complete traceability chain of information.
+
+Every claim must preserve references to:
+
+- originating statement
+- originating document
+- originating source
+
+No information inside KOS may lose provenance.
+
 # Pending Concepts
 
 The following concepts are intentionally left undefined.

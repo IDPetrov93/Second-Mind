@@ -60,3 +60,7 @@ No production code has been written.
 ## Goal
 
 Build a long-term, modular and open-source Knowledge Operating System that remains independent of any specific AI model or technology.
+
+---
+
+KOS does not collect information. KOS continuously builds and maintains understanding.

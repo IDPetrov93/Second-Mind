@@ -506,3 +506,47 @@ This does not fully close every case. Where two genuinely independent Primary So
 - Relation's scope widened to include Event → Event connections.
 - Independent Multi-Primary Corroboration added to Pending Concepts as a narrower, separate remaining gap.
 - Of the five Resolution-type gaps named across this project (Entity Resolution, Event Resolution, Attribution Discovery, Confidence Computation Model, Citation Fidelity Computation Model), this is the first to reach Accepted status rather than staying Proposed or Pending.
+
+---
+
+# ADR-021
+
+## Title
+
+Relationships Must Not Be Inferred Without Evidence
+
+## Status
+
+Accepted
+
+---
+
+## Context
+
+Statements frequently mention multiple entities together.
+
+Their relationship is often implied rather than explicitly stated.
+
+Incorrect relationship inference can produce false knowledge.
+
+---
+
+## Decision
+
+Relationships between entities shall only be created when:
+
+- explicitly stated in a Statement, or
+
+- supported by independent Evidence.
+
+Entity co-occurrence alone is insufficient.
+
+---
+
+## Consequences
+
+Mentioning two entities in the same Statement does not establish a relationship.
+
+Unknown relationships remain unknown.
+
+Future Evidence may strengthen or create relationships.

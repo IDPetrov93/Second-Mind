@@ -1,141 +1,220 @@
 # INFORMATION PIPELINE
 
-This document defines how KOS transforms incoming information into maintained knowledge.
+## Purpose
 
-The pipeline is topic-centric.
+This document defines how KOS transforms incoming Signals into maintained Knowledge.
 
-News are not the final product.
+Signals are never trusted by default.
 
-Knowledge is.
+Every Signal must pass validation before it is allowed to influence any Topic.
+
+KOS is Topic-centric.
+
+Knowledge—not information—is the primary product of KOS.
 
 ---
 
-## Stage 1 — Signal Detection
+# Pipeline Overview
 
-KOS receives a signal.
+```
+External World
+       │
+       ▼
+Signal Detection
+       │
+       ▼
+Signal Validation
+       │
+       ▼
+Topic Identification
+       │
+       ▼
+Knowledge Acquisition
+       │
+       ▼
+Knowledge Validation
+       │
+       ▼
+Knowledge Maintenance
+       │
+       ▼
+Pattern Detection
+       │
+       ▼
+Knowledge Synthesis
+```
 
-Signals may include:
+---
 
-- News
-- RSS
-- Research paper
-- SEC filing
-- Tweet
-- Blog post
+# Stage 1 — Signal Detection
+
+KOS receives a Signal.
+
+A Signal is an indication that one or more Topics may require investigation.
+
+Possible Signal types include:
+
+- News article
+- RSS item
+- Official announcement
 - Government publication
+- SEC filing
+- Research paper
+- Company blog
+- Financial report
+- Social media post
+- Video
 - Podcast
 - User input
 
-A Signal indicates that knowledge may require updating.
+A Signal is not Knowledge.
 
-A Signal is never treated as knowledge.
+A Signal is not Evidence.
+
+A Signal is only a trigger.
 
 ---
 
-## Stage 2 — Topic Identification
+# Stage 2 — Signal Validation
 
-Determine which Topic(s) are affected.
+Before KOS investigates a Topic, the Signal itself must be evaluated.
+
+Validation attempts to answer:
+
+- Did the reported event actually occur?
+- Is the Signal current?
+- Can the original source be identified?
+- Is the information presented in the correct context?
+- Do independent sources support the Signal?
+
+Possible outcomes:
+
+- Validated
+- Partially Validated
+- Inconclusive
+- Rejected
+
+Rejected Signals never modify Knowledge.
+
+Rejected Signals may still be archived for traceability.
+
+---
+
+# Stage 3 — Topic Identification
+
+KOS determines which Topics may be affected.
 
 One Signal may affect multiple Topics.
 
-Topics are the primary organizational unit of KOS.
+If no suitable Topic exists, KOS may create one through the Bootstrap process defined in the Topic Model.
+
+Topics—not Signals—are the primary objects maintained by KOS.
 
 ---
 
-## Stage 3 — Knowledge Acquisition
+# Stage 4 — Knowledge Acquisition
 
-Gather information related to the affected Topic.
+For every affected Topic, KOS performs investigation.
 
-The objective is not merely to confirm the Signal.
+The objective is understanding.
 
-The objective is to understand the current state of the Topic.
+Not confirmation.
 
-Gather:
+Knowledge Acquisition may include:
 
-- primary sources
+- official documentation
 - independent reporting
 - historical context
-- previous related events
-- existing Knowledge Objects
+- quantitative data
 - supporting evidence
 - contradicting evidence
-- quantitative data
+- previous Knowledge Objects
+- related Topics
 
-Knowledge Acquisition continues until sufficient context exists.
+KOS actively searches for missing context.
 
----
-
-## Stage 4 — Statement Extraction
-
-Extract factual Statements from acquired information.
-
-Statements preserve provenance.
-
-Statements never infer meaning.
+Investigation continues until sufficient understanding is achieved or available evidence is exhausted.
 
 ---
 
-## Stage 5 — Claim Extraction
+# Stage 5 — Knowledge Validation
 
-Transform Statements into structured Claims.
+Information collected during investigation is evaluated before entering the Knowledge Base.
 
-Claims remain traceable to their originating Statements.
+Validation determines:
 
-No assumptions are introduced.
+- factual accuracy
+- consistency
+- provenance
+- supporting evidence
+- contradictory evidence
+- confidence
 
----
+Unsupported information does not become Knowledge.
 
-## Stage 6 — Evaluation
+Conflicting information remains explicitly represented.
 
-Evaluate Claims using the appropriate validation strategy.
-
-Evidence may:
-
-- support
-- dispute
-- contextualize
-- remain insufficient
-
-Unknown remains a valid outcome.
+Uncertainty is preserved.
 
 ---
 
-## Stage 7 — Knowledge Update
+# Stage 6 — Knowledge Maintenance
 
-Update the affected Knowledge Objects.
+Validated Knowledge is integrated into the appropriate Topic.
 
 Possible outcomes include:
 
-- new knowledge
-- updated knowledge
-- corrected knowledge
-- archived knowledge
+- new Knowledge Object
+- updated Knowledge Object
+- deprecated Knowledge
+- corrected Knowledge
+- additional context
 - no meaningful change
 
 Knowledge evolves continuously.
 
----
-
-## Stage 8 — Knowledge Synthesis
-
-Produce an updated understanding of the Topic.
-
-Outputs summarize the current state of knowledge rather than individual Signals.
-
-Knowledge Synthesis is the primary product of KOS.
+Historical continuity must be preserved.
 
 ---
 
-## Stage 9 — Output Plugins
+# Stage 7 — Pattern Detection
 
-Optional plugins transform maintained knowledge into formats such as:
+KOS continuously analyzes maintained Knowledge across Topics.
 
-- reports
-- newsletters
-- blog posts
-- videos
-- API responses
+The objective is to identify recurring or emerging behaviors.
 
-Plugins never modify Knowledge.
+Patterns are created only when supported by multiple validated Knowledge Objects.
 
-They only consume it.
+Patterns describe change over time.
+
+Patterns are never predictions.
+
+---
+
+# Stage 8 — Knowledge Synthesis
+
+At any point, KOS should be able to produce an up-to-date understanding of a Topic.
+
+Knowledge Synthesis answers:
+
+- What is currently known?
+- What recently changed?
+- Why does it matter?
+- What evidence supports this understanding?
+- Where does uncertainty remain?
+- Which Patterns are emerging?
+
+Knowledge Synthesis is the primary output of the KOS Core.
+
+Plugins consume synthesized Knowledge rather than raw Signals.
+
+---
+
+# Core Principles
+
+- Signals initiate investigation.
+- Topics accumulate Knowledge.
+- Knowledge evolves over time.
+- Patterns emerge from validated Knowledge.
+- Outputs are generated from Knowledge, never directly from Signals.
+- Uncertainty is preserved whenever evidence is incomplete.

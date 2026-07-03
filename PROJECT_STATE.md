@@ -29,6 +29,7 @@ No implementation has started.
 - Knowledge Lifecycle
 - AI Session Protocol
 - Smallest processing unit analysis (ADR-004 accepted, ADR-005, ADR-006)
+- Claim Extraction formally defined as a lossy transformation (ADR-011 accepted)
 - Information Pipeline (INFORMATION_PIPELINE.md) — abstract stage definitions only, not yet walked through a real example
 - Traceability (TRACEABILITY.md)
 
@@ -87,4 +88,4 @@ Indefinite conceptual refinement with no defined stopping point (see Phase 1 Exi
 
 ## Last Updated
 
-2026-07-02 (session 3 — structural cleanup, ADR-007 through ADR-010)
+2026-07-02 (session 3 — structural cleanup, ADR-007 through ADR-011)

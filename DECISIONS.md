@@ -237,6 +237,8 @@ PROJECT_STATE.md's Known Risks named "premature implementation" and "overenginee
 
 Exit criteria are added to PROJECT_STATE.md. Status is Proposed because the specific criteria are a first draft and should be challenged, not assumed correct on arrival.
 
+---
+
 # ADR-011
 
 ## Title

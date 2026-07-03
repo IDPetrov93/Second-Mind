@@ -71,7 +71,7 @@ Per ADR-004, this happens in two steps: Validated Information is first decompose
 - Context
 - Events
 
-This transformation is not a copy. It can misrepresent the source even when the source itself is accurate. Every Claim produced at this stage must be assigned an Extraction Fidelity value alongside its (not-yet-evaluated) content — see CONCEPTS.md.
+This transformation is not a copy. It can misrepresent the source even when the source itself is accurate (see ADR-011). Every Claim produced at this stage must be assigned an Extraction Fidelity value alongside its (not-yet-evaluated) content — see CONCEPTS.md.
 
 At this stage KOS understands the structure of the information but has not yet evaluated it.
 

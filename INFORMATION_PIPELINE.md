@@ -116,7 +116,7 @@ One Statement may generate:
 - one Claim
 - many Claims
 
-Claim Extraction is a **lossy transformation**.
+Claim Extraction is a **lossy transformation** (see ADR-011).
 
 Every extracted Claim must reference its originating Statement.
 

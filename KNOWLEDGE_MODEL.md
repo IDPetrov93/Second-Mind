@@ -53,7 +53,7 @@ No derived knowledge may exist without an explainable chain of relationships.
 
 ## Immutability
 
-Original Information is immutable.
+Original Documents are immutable.
 
 Derived structures may evolve.
 
@@ -63,7 +63,7 @@ Relations may change.
 
 Knowledge may evolve.
 
-Original Information never changes.
+Original Documents never change.
 
 ---
 
@@ -83,25 +83,42 @@ Processing is defined by the Core architecture.
 
 ## Source
 
-Produces Information.
+Produces Documents.
 
-One Source may produce many Information objects.
+One Source may produce many Documents.
+
+A Source may be Primary or Secondary; concrete source catalogs and trust rankings live outside core (see CONCEPTS.md, Pending Concepts: Source Trust Configuration).
 
 ---
 
-## Information
+## Attribution
+
+Links a Document to the Source or Document it derives from.
+
+Attribution is structural, not evaluative — it does not itself carry Confidence or trust.
+
+Documents connected by Attribution to the same origin are echoes, not independent corroboration (see ADR-014).
+
+Where Attribution exists, the citing Document also carries a Citation Fidelity value — how accurately it represents what it cites. This is separate from whether the cited Source itself is trustworthy (see CONCEPTS.md, ADR-016).
+
+---
+
+## Document
 
 Originates from exactly one Source.
 
-May contain:
+May carry zero, one, or more Attributions to other Documents or Sources it derives from.
 
+May contain, once processed:
+
+- Statements
 - Claims
 - Entity references
 - Context
 
-Information is immutable.
+Documents are immutable.
 
-Information is never automatically considered Knowledge.
+Documents are never automatically considered Knowledge.
 
 ---
 
@@ -135,9 +152,9 @@ A Claim may participate in multiple Relations.
 
 Evidence is not a standalone object.
 
-Evidence is the role that Information plays when it is used to evaluate one or more Claims.
+Evidence is the role that a Document, or a Claim structured from one, plays when it is used to evaluate one or more other Claims.
 
-The same Information may:
+The same Document may:
 
 - support multiple Claims
 - dispute multiple Claims
@@ -170,7 +187,6 @@ Examples include:
 - Entity → Entity
 - Claim → Entity
 - Claim → Claim
-- Information → Claim
 
 Relations define the structure of the Knowledge Model.
 
@@ -201,6 +217,10 @@ An Event may connect multiple Entities across time.
 
 Events do not carry independently assigned Confidence. Confidence applies to the Claims an Event generates, not to the Event itself.
 
+Topical similarity between Claims does not imply they belong to the same Event. Event Resolution — how a Claim is anchored to a specific Event — is not yet defined (see CONCEPTS.md, Pending Concepts, and ADR-015).
+
+An Event may be punctual or an evolving process observed at multiple points in time; telling these apart is also part of the undefined Event Resolution problem (see ADR-018).
+
 ---
 
 ## Confidence
@@ -208,6 +228,8 @@ Events do not carry independently assigned Confidence. Confidence applies to the
 Confidence represents the current reliability estimate of a Claim or derived Knowledge.
 
 A Relation's reliability is derived from the Confidence of the Claims and Entities it connects; Relations do not carry independently assigned Confidence (see ADR-006).
+
+Confidence must not treat Attribution-linked echoes of the same origin as independent evidence (see ADR-014).
 
 Confidence changes as Evidence changes.
 
@@ -234,7 +256,7 @@ Analysis discovers:
 - implications
 - relationships
 
-Analysis never modifies original Information.
+Analysis never modifies original Documents.
 
 ---
 
@@ -278,36 +300,4 @@ Implementation choices must preserve the semantics defined by this model.
 
 ## Processing Hierarchy
 
-Reality
-
-↓
-
-Observation
-
-↓
-
-Document
-
-↓
-
-Statement
-
-↓
-
-Claim
-
-↓
-
-Evidence
-
-↓
-
-Knowledge
-
-↓
-
-Insight
-
-Each layer represents a logical transformation.
-
-No layer may be skipped.
+The high-level chain (Reality → Observation → Document → Statement → Claim → Evidence → Knowledge → Insight) is defined once, in **TRACEABILITY.md**. The detailed stage-by-stage pipeline is defined in **INFORMATION_PIPELINE.md**. Neither is repeated here — see the note at the top of this document about why duplication is avoided.

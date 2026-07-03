@@ -8,48 +8,13 @@ If a concept is not defined here, it is not part of the architecture yet.
 
 ---
 
-## Information
-
-Any recorded content acquired from a source before it has been evaluated or structured by KOS.
-
-Examples:
-
-- News article
-- Tweet
-- PDF
-- Video
-- RSS item
-- API response
-
-Information may be true, false or incomplete.
-
----
-
-## Source
-
-The origin of information.
-
-Examples:
-
-- Reuters
-- SEC
-- Binance Blog
-- GitHub
-- Government website
-
-A source is not automatically trustworthy.
-
-One source may produce many pieces of information.
-
----
-
 ## Evidence
 
-Evidence is the role that Information plays when it is used to evaluate one or more Claims.
+Evidence is the role that a Document, or a Claim structured from one, plays when it is used to evaluate one or more other Claims.
 
 Evidence is contextual.
 
-The same Information may support one Claim, dispute another, or be irrelevant to many others.
+The same Document may support one Claim, dispute another, or be irrelevant to many others.
 
 Evidence influences Confidence.
 
@@ -91,6 +56,8 @@ An estimate of how faithfully an extracted Claim represents its originating Stat
 Extraction Fidelity measures extraction quality only.
 
 It does not evaluate whether the Claim is true.
+
+Extraction Fidelity covers more than wording drift: if a Claim assigns an action to the wrong Entity (e.g. crediting an approval to a named partner instead of the actual recipient named in the source), that is a fidelity failure, not a truth failure — the Statement was misread, not merely reworded. See ADR-019.
 
 Extraction Fidelity and Confidence are independent concepts.
 
@@ -149,6 +116,8 @@ A measurable estimate of how reliable a claim or derived knowledge is, based on 
 
 Confidence is assigned only to claims and to knowledge derived from them. A relation's reliability is derived from the confidence of the claims and entities it connects; relations do not carry independently assigned confidence (see ADR-006).
 
+Confidence must not treat multiple Documents that trace to the same origin through Attribution as independent evidence. Five outlets echoing one report is one account, not five (see ADR-014). How this is computed is not yet defined (see Pending Concepts: Confidence Computation Model).
+
 Confidence is never certainty.
 
 Confidence may increase or decrease over time.
@@ -157,7 +126,7 @@ Confidence may increase or decrease over time.
 
 ## Knowledge
 
-Information that has been evaluated, connected to context and assigned a measurable confidence.
+Claims that have been evaluated, connected to context and assigned a measurable confidence.
 
 Knowledge may later prove incorrect.
 
@@ -209,11 +178,15 @@ Events may generate one or more claims.
 
 Events connect entities across time.
 
+Two claims describing similar content are not automatically the same Event. Topical similarity does not imply Event identity — a claim about a Primary filing in April and a claim about a Public filing in July may describe the same ongoing process without being the same Event, or may be genuinely distinct events. How Claims are anchored to a specific Event (Event Resolution) is not yet defined (see Pending Concepts, and ADR-015).
+
+An Event may be punctual (a single, discrete occurrence) or may represent an evolving process observed at multiple points in time (a policy direction restated and advanced over months). Event Resolution must be able to tell whether a new Claim reports a genuinely new Event, or is a new observation of an already-known, still-unfolding Event — these require different handling and neither can be assumed by default (see ADR-018).
+
 ---
 
 ## Document
 
-A container that carries one or more pieces of information.
+A container that carries one or more pieces of recorded content, acquired from a Source before it has been evaluated or structured by KOS.
 
 Examples:
 
@@ -222,11 +195,63 @@ Examples:
 - Video
 - Podcast
 - Tweet
+- RSS item
+- API response
 - Database record
 
-Documents are transport media.
+Documents are transport media. Documents are not knowledge. A Document may be true, false or incomplete — Documents are not evaluated, only the Claims structured from them are.
 
-Documents are not knowledge.
+---
+
+## Source
+
+The origin of a Document.
+
+A Source may be Primary (a first-hand account: a company statement, a filing, a direct observation) or Secondary (an account derived from another Source, e.g. an outlet reporting on another outlet's reporting).
+
+A Source may be anonymous. Anonymity is a property of a Source, not a reason to exclude it — its effect is accounted for through Confidence, not through Source identity.
+
+A source is not automatically trustworthy.
+
+One Source may produce many Documents.
+
+Which sources KOS tracks, and how much any given Source is trusted, is niche-specific configuration supplied by the deployment — not part of core architecture. Core defines the structure (Source, Attribution below); concrete source catalogs and trust rankings are supplied externally, per client, per domain (see Pending Concepts: Source Trust Configuration).
+
+Examples:
+
+- Reuters
+- SEC
+- Binance Blog
+- GitHub
+- Government website
+
+---
+
+## Attribution
+
+A link from one Document to the Source or Document it was derived from.
+
+A Document may have zero, one, or more Attributions.
+
+Attribution makes visible whether a Document is a Primary account or a Secondary account — one derived from another Document already known to KOS (e.g. an outlet's article about another outlet's article, or about a primary filing), rather than a direct account from a Source.
+
+Attribution is structural only. It records that a citation or derivation exists. It does not evaluate whether that citation is trustworthy — trust is a function of Confidence, computed later, not of Attribution itself.
+
+Multiple Documents that trace back to the same origin through Attribution are not independent corroboration of each other. They are echoes of one account, and Claims structured from them must be treated as such (see ADR-014).
+
+How KOS determines that a Document cites or derives from another Document — as opposed to being told so explicitly by the Document itself — is not yet defined (Attribution Discovery, see Pending Concepts, ADR-017).
+
+---
+
+## Citation Fidelity
+
+An estimate of how accurately a Document represents the Document or Source it is Attributed to.
+
+Citation Fidelity is distinct from Extraction Fidelity. Extraction Fidelity measures whether a Claim faithfully represents the Statement it came from, inside one Document. Citation Fidelity measures whether a Document faithfully represents another Document or Source it claims to cite, across an Attribution link.
+
+A Document may cite an unreliable Source accurately (high Citation Fidelity, low Source trust) or cite a reliable Source inaccurately — through spin, selective quotation, or distortion (low Citation Fidelity, high Source trust). These are independent and must not be collapsed into one number.
+
+Citation Fidelity exists because Attribution only records that a citation exists; it says nothing about whether the citation is a fair representation of what was cited. See ADR-016.
 
 ---
 
@@ -272,15 +297,18 @@ Examples:
 
 ## Provenance
 
-The complete traceability chain of information.
+The complete traceability chain of a claim.
 
 Every claim must preserve references to:
 
 - originating statement
 - originating document
 - originating source
+- any Attribution chain the originating document carries, where that document is itself derived from another document or source (see Attribution, ADR-014)
 
-No information inside KOS may lose provenance.
+No claim inside KOS may lose provenance.
+
+---
 
 # Pending Concepts
 
@@ -300,7 +328,10 @@ They will only be introduced when required by the architecture.
 - Component Boundaries
 - Internal Interface
 - Entity Resolution
-- Confidence Computation Model (how a Confidence value is actually derived/aggregated is not yet defined anywhere)
+- Event Resolution (how a Claim is anchored to a specific Event, and how two claims are determined to describe the same vs. a different Event — including punctual vs. evolving-process Events — is not yet defined — see ADR-015, ADR-018)
+- Attribution Discovery (how KOS determines that a Document cites or derives from another Document is not yet defined — see ADR-017)
+- Confidence Computation Model (how a Confidence value is actually derived/aggregated is not yet defined anywhere; it must account for Attribution-linked echoes, see ADR-014)
+- Citation Fidelity Computation Model (how Citation Fidelity is actually measured is not yet defined — see ADR-016)
+- Source Trust Configuration (how much a given Source is trusted is niche-specific and client-supplied — deliberately not defined here; core only defines the Source/Attribution structure, not a fixed trust ranking or fixed source catalog)
 
-
-  A concept may only be modified through an accepted Architecture Decision Record (ADR).
+A concept may only be modified through an accepted Architecture Decision Record (ADR).

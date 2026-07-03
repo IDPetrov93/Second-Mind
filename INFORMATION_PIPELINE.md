@@ -81,6 +81,7 @@ Assign:
 - Timestamp
 - Language
 - Hash
+- Attribution (optional — if this Document derives from, or reports on, another Document or a cited Source rather than being a direct first-hand account, that link must be recorded here; see CONCEPTS.md, ADR-014). How this link is detected in the first place — from explicit citation, from content matching, or otherwise — is not yet defined (Attribution Discovery, see ADR-017). Until it is, Attribution may need to be asserted rather than automatically discovered.
 
 The original document must never be modified.
 
@@ -128,7 +129,11 @@ Extraction Fidelity measures how faithfully the Claim represents the originating
 
 Extraction Fidelity is **not** Confidence.
 
+Where the originating Document carries an Attribution, it must also receive a **Citation Fidelity** estimate — how faithfully it represents the Document or Source it cites. This is separate from both Extraction Fidelity and Confidence (see CONCEPTS.md, ADR-016).
+
 Claims become independently evaluable.
+
+Where a Claim describes something occurring at a specific point or period in time, it must be anchored to an Event (see CONCEPTS.md, Event). Anchoring is not automatic from topic similarity — two claims about a similar topic are not the same Event unless established as such (Event Resolution, not yet defined — see ADR-015).
 
 ---
 
@@ -157,6 +162,10 @@ Collect supporting and contradicting evidence.
 Evidence is never discarded.
 
 Evidence is attached to Claims.
+
+Documents connected by Attribution to the same origin must not be counted as independent evidence — they are echoes (see ADR-014).
+
+Claims anchored to different Events must not be treated as corroborating or duplicate evidence for each other, even when topically similar (see ADR-015).
 
 ---
 

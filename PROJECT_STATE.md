@@ -83,6 +83,26 @@ Continue walking INFORMATION_PIPELINE.md manually against further real, non-triv
 
 ---
 
+### Open Architectural Question
+
+Recent dry-run exercises suggest that some Knowledge Objects represent values that change over time rather than permanent facts.
+
+Examples:
+
+- Percentage of BTC supply in unrealized loss.
+- Total BTC holdings of a company.
+- Current market capitalization.
+
+It remains undecided whether these should:
+
+- update existing Knowledge Objects;
+- create new versions;
+- coexist as time-series observations.
+
+No architectural decision has been made.
+
+---
+
 ## Known Risks
 
 Premature implementation.

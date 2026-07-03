@@ -89,3 +89,13 @@ Continue from the current project state.
 Do not repeat previous discussions.
 
 Focus only on the current architectural task.
+
+---
+
+## Document Update Policy
+
+When proposing architectural changes, the AI must provide complete replacement documents whenever practical.
+
+Avoid partial snippets unless explicitly requested.
+
+The objective is to allow direct replacement of repository files.

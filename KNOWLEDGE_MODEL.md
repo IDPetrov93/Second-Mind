@@ -261,3 +261,41 @@ No component may redefine the meaning of Knowledge defined in **KNOWLEDGE_THEORY
 New concepts must first be introduced in **CONCEPTS.md** before they may be used anywhere else.
 
 Implementation choices must preserve the semantics defined by this model.
+
+---
+
+## Processing Hierarchy
+
+Reality
+
+↓
+
+Observation
+
+↓
+
+Document
+
+↓
+
+Statement
+
+↓
+
+Claim
+
+↓
+
+Evidence
+
+↓
+
+Knowledge
+
+↓
+
+Insight
+
+Each layer represents a logical transformation.
+
+No layer may be skipped.

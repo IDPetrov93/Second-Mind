@@ -2,23 +2,25 @@
 
 ## Purpose
 
-Every knowledge object inside KOS must be fully explainable.
+Every Knowledge Object inside KOS must be fully explainable.
 
-Users must always be able to answer:
+A user should always be able to answer:
 
 Where did this come from?
 
 ---
 
+## Traceability Chain
+
 Knowledge
 
 ↓
 
-Claims
+Claim
 
 ↓
 
-Statements
+Statement
 
 ↓
 
@@ -28,21 +30,17 @@ Document
 
 Source
 
-↓
-
-Observation
-
 ---
 
-Every transformation must preserve references.
+Every transformation preserves references to the previous layer.
 
-Nothing inside KOS may become detached from its origin.
+No object may lose its provenance.
 
 ---
 
 ## Design Rule
 
-If provenance is lost, knowledge quality immediately decreases.
+Loss of provenance always reduces knowledge quality.
 
 ---
 

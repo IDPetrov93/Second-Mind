@@ -317,6 +317,18 @@ No claim inside KOS may lose provenance.
 
 ---
 
+##Pattern
+
+A recurring or emerging behavior identified through the synthesis of multiple validated Knowledge Objects over time.
+
+Patterns describe how a Topic evolves.
+
+Patterns are evidence-based.
+
+Patterns are not predictions.
+
+---
+
 # Pending Concepts
 
 The following concepts are intentionally left undefined.

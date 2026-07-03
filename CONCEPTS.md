@@ -203,6 +203,44 @@ Events connect entities across time.
 
 ---
 
+## Document
+
+A container that carries one or more pieces of information.
+
+Examples:
+
+- Article
+- PDF
+- Video
+- Podcast
+- Tweet
+- Database record
+
+Documents are transport media.
+
+Documents are not knowledge.
+
+---
+
+## Observation
+
+The act of detecting information from the external world.
+
+Observation always precedes information processing.
+
+Observation itself does not validate information.
+
+---
+
+## Fact
+
+A claim that corresponds to reality.
+
+Facts exist independently of KOS.
+
+KOS never stores facts directly.
+
+KOS stores knowledge with varying confidence about facts.
 # Pending Concepts
 
 The following concepts are intentionally left undefined.
@@ -214,9 +252,6 @@ They will only be introduced when required by the architecture.
 - Timeline
 - Workflow
 - Task
-- Observation
-- Fact
-- Document
 - Collection
 - Knowledge Graph
 - Knowledge Quality Model

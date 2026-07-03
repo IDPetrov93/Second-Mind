@@ -148,3 +148,11 @@ Document like the next maintainer is a stranger.
 The project must never depend on ChatGPT's memory.
 
 It must depend on its own documentation.
+
+## Knowledge-Centric Principle
+
+Knowledge is the primary product of KOS.
+
+Information exists only to create, improve or maintain knowledge.
+
+No architectural decision may prioritize information processing over knowledge quality.

@@ -236,3 +236,39 @@ Proposed
 PROJECT_STATE.md's Known Risks named "premature implementation" and "overengineering" but nothing prevented the opposite failure mode: indefinite conceptual refinement with no defined point at which Phase 1 (Foundation) is considered complete enough to proceed.
 
 Exit criteria are added to PROJECT_STATE.md. Status is Proposed because the specific criteria are a first draft and should be challenged, not assumed correct on arrival.
+
+# ADR-011
+
+## Title
+
+Claim Extraction is a Lossy Transformation
+
+## Status
+
+Accepted
+
+---
+
+## Context
+
+Claims are structured representations extracted from Statements.
+
+During extraction, wording, grammar and other linguistic information may be simplified or discarded.
+
+---
+
+## Decision
+
+Claim Extraction is officially defined as a lossy transformation.
+
+The originating Statement must always be preserved.
+
+Claims must maintain a reference to their originating Statement.
+
+---
+
+## Consequences
+
+- Claims may be re-extracted in the future.
+- Improved extraction algorithms can be applied without losing information.
+- Provenance remains complete.

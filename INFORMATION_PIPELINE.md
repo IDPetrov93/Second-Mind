@@ -1,109 +1,77 @@
 # INFORMATION PIPELINE
 
-## Purpose
+This document defines how KOS transforms incoming information into maintained knowledge.
 
-Describe how observations become knowledge.
+The pipeline is topic-centric.
 
-The pipeline defines logical transformations only.
+News are not the final product.
 
-Implementation details are intentionally excluded.
-
----
-
-Reality
-
-↓
-
-Observation
-
-↓
-
-Document Registration
-
-↓
-
-Normalization
-
-↓
-
-Statement Extraction
-
-↓
-
-Claim Extraction
-
-↓
-
-Claim Classification
-
-↓
-
-Evidence Collection
-
-↓
-
-Evaluation
-
-↓
-
-Knowledge Update
-
-↓
-
-Analysis
-
-↓
-
-Insight
-
-↓
-
-Human
+Knowledge is.
 
 ---
 
-## Stage 1 — Observation
+## Stage 1 — Signal Detection
 
-Observe potentially relevant information.
+KOS receives a signal.
 
-No interpretation occurs.
+Signals may include:
 
----
+- News
+- RSS
+- Research paper
+- SEC filing
+- Tweet
+- Blog post
+- Government publication
+- Podcast
+- User input
 
-## Stage 2 — Document Registration
+A Signal indicates that knowledge may require updating.
 
-Register an immutable document.
-
-Assign:
-
-- Document ID
-- Source
-- Timestamp
-- Language
-- Hash
-- Attribution (optional — if this Document derives from, or reports on, another Document or a cited Source rather than being a direct first-hand account, that link must be recorded here; see CONCEPTS.md, ADR-014). How this link is detected in the first place — from explicit citation, from content matching, or otherwise — is not yet defined (Attribution Discovery, see ADR-017). Until it is, Attribution may need to be asserted rather than automatically discovered.
-
-The original document must never be modified.
+A Signal is never treated as knowledge.
 
 ---
 
-## Stage 3 — Normalization
+## Stage 2 — Topic Identification
 
-Convert the document into a common internal representation.
+Determine which Topic(s) are affected.
 
-No semantic interpretation occurs.
+One Signal may affect multiple Topics.
+
+Topics are the primary organizational unit of KOS.
+
+---
+
+## Stage 3 — Knowledge Acquisition
+
+Gather information related to the affected Topic.
+
+The objective is not merely to confirm the Signal.
+
+The objective is to understand the current state of the Topic.
+
+Gather:
+
+- primary sources
+- independent reporting
+- historical context
+- previous related events
+- existing Knowledge Objects
+- supporting evidence
+- contradicting evidence
+- quantitative data
+
+Knowledge Acquisition continues until sufficient context exists.
 
 ---
 
 ## Stage 4 — Statement Extraction
 
-Extract immutable Statements.
-
-Statements preserve the original wording.
+Extract factual Statements from acquired information.
 
 Statements preserve provenance.
 
-Statements are never modified.
+Statements never infer meaning.
 
 ---
 
@@ -111,110 +79,63 @@ Statements are never modified.
 
 Transform Statements into structured Claims.
 
-One Statement may generate:
+Claims remain traceable to their originating Statements.
 
-- zero Claims
-- one Claim
-- many Claims
-
-Claim Extraction is a **lossy transformation** (see ADR-011).
-
-Every extracted Claim must reference its originating Statement.
-
-The original Statement must always be preserved to allow future re-extraction using improved extraction methods.
-
-Every Claim receives an initial **Extraction Fidelity** estimate.
-
-Extraction Fidelity measures how faithfully the Claim represents the originating Statement.
-
-Extraction Fidelity is **not** Confidence.
-
-Where the originating Document carries an Attribution, it must also receive a **Citation Fidelity** estimate — how faithfully it represents the Document or Source it cites. This is separate from both Extraction Fidelity and Confidence (see CONCEPTS.md, ADR-016).
-
-Claims become independently evaluable.
-
-Where a Claim describes something occurring at a specific point or period in time, it must be anchored to an Event (see CONCEPTS.md, Event). Anchoring rule: a Claim is anchored to the same Event as another Claim only if both trace, through Provenance/Attribution, to the same Primary Document. A Claim tracing to a different Primary Document is a different Event, even on the same topic (Event Resolution, see ADR-020).
+No assumptions are introduced.
 
 ---
 
-## Stage 6 — Claim Classification
+## Stage 6 — Evaluation
 
-Assign one or more semantic categories.
+Evaluate Claims using the appropriate validation strategy.
 
-Examples:
+Evidence may:
 
-- Financial
-- Political
-- Scientific
-- Legal
-- Opinion
-- Prediction
-- Historical
+- support
+- dispute
+- contextualize
+- remain insufficient
 
-Classification guides later validation.
+Unknown remains a valid outcome.
 
 ---
 
-## Stage 7 — Evidence Collection
+## Stage 7 — Knowledge Update
 
-Collect supporting and contradicting evidence.
+Update the affected Knowledge Objects.
 
-Evidence is never discarded.
+Possible outcomes include:
 
-Evidence is attached to Claims.
+- new knowledge
+- updated knowledge
+- corrected knowledge
+- archived knowledge
+- no meaningful change
 
-Documents connected by Attribution to the same origin must not be counted as independent evidence — they are echoes (see ADR-014).
-
-Claims anchored to different Events must not be treated as corroborating or duplicate evidence for each other, even when topically similar (see ADR-020). Where related Events form a sequence (e.g. an unfolding policy direction), that continuity is a Relation between Events, not shared Evidence.
-
----
-
-## Stage 8 — Evaluation
-
-Estimate Confidence using currently available evidence.
-
-Evaluation never determines truth.
-
-Confidence may increase or decrease over time.
+Knowledge evolves continuously.
 
 ---
 
-## Stage 9 — Knowledge Update
+## Stage 8 — Knowledge Synthesis
 
-Create or update Knowledge Objects.
+Produce an updated understanding of the Topic.
 
-Knowledge always remains revisable.
+Outputs summarize the current state of knowledge rather than individual Signals.
 
-Knowledge never loses provenance.
-
----
-
-## Stage 10 — Analysis
-
-Discover patterns, relationships and inconsistencies across Knowledge.
+Knowledge Synthesis is the primary product of KOS.
 
 ---
 
-## Stage 11 — Insight
+## Stage 9 — Output Plugins
 
-Generate human-readable observations.
+Optional plugins transform maintained knowledge into formats such as:
 
-Insights support reasoning.
+- reports
+- newsletters
+- blog posts
+- videos
+- API responses
 
-Insights never become decisions.
+Plugins never modify Knowledge.
 
----
-
-# Core Principles
-
-Documents are immutable.
-
-Statements are immutable.
-
-Claims are independently evaluable.
-
-Knowledge is revisable.
-
-Every object preserves provenance.
-
-Every transformation is explainable.
+They only consume it.

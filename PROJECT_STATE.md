@@ -118,6 +118,19 @@ This question remains intentionally unresolved until additional real-world scena
 
 ---
 
+## AQ-002 — Confidence Granularity
+
+Current architecture contains a single concept of Confidence.
+
+Dry runs increasingly suggest that KOS may need to distinguish between:
+
+- Source Confidence
+- Evidence Confidence
+
+The question remains intentionally unresolved until additional scenarios confirm that the distinction is consistently useful.
+
+---
+
 ## Known Risks
 
 Premature implementation.

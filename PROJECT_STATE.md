@@ -103,6 +103,21 @@ No architectural decision has been made.
 
 ---
 
+## AQ-001 — Representation of Analytical Assessments
+
+Current architecture models Statements and Claims effectively for factual information.
+
+It is still unclear how KOS should represent:
+
+- expert opinions;
+- analytical assessments;
+- market interpretations;
+- forward-looking statements.
+
+This question remains intentionally unresolved until additional real-world scenarios are analyzed.
+
+---
+
 ## Known Risks
 
 Premature implementation.

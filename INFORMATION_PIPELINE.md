@@ -2,15 +2,15 @@
 
 ## Purpose
 
-This document describes how information moves through KOS.
+This document defines how KOS transforms observations into structured knowledge.
 
-It intentionally avoids implementation details.
+The pipeline describes logical transformations only.
 
-The pipeline defines transformations, not technologies.
+Implementation details are intentionally excluded.
 
 ---
 
-# Overview
+# Pipeline
 
 Reality
 
@@ -20,11 +20,23 @@ Observation
 
 ↓
 
-Information
+Document Registration
+
+↓
+
+Information Normalization
+
+↓
+
+Statement Extraction
 
 ↓
 
 Claim Extraction
+
+↓
+
+Claim Classification
 
 ↓
 
@@ -54,103 +66,183 @@ Human
 
 ## Stage 1 — Observation
 
-### Input
+Input
 
 External reality.
 
-### Output
+Output
 
-Observed information.
+Observed document.
 
-### Purpose
+Purpose
 
-Detect information that may be relevant.
+Detect potentially relevant information.
 
-No interpretation happens here.
-
----
-
-## Stage 2 — Information
-
-### Input
-
-Observed data.
-
-### Output
-
-Structured information.
-
-### Purpose
-
-Normalize information into a common internal representation.
-
-No conclusions are drawn.
+No interpretation occurs.
 
 ---
 
-## Stage 3 — Claim Extraction
+## Stage 2 — Document Registration
 
-### Input
+Input
 
-Structured information.
+Observed document.
 
-### Output
+Output
 
-Individual claims.
+Registered document with metadata.
 
-### Purpose
+Metadata includes:
 
-Separate documents into atomic statements.
+- Source
+- Timestamp
+- URL
+- Media Type
+- Language
+- Hash
 
-Each claim becomes independently traceable.
+Purpose
+
+Create an immutable historical record.
+
+The document itself is never modified.
 
 ---
 
-## Stage 4 — Evidence Collection
+## Stage 3 — Information Normalization
 
-### Input
+Input
+
+Registered document.
+
+Output
+
+Normalized textual representation.
+
+Purpose
+
+Convert information into a common internal format.
+
+No semantic interpretation occurs.
+
+---
+
+## Stage 4 — Statement Extraction
+
+Input
+
+Normalized information.
+
+Output
+
+Individual statements.
+
+Purpose
+
+Separate direct observations from quotations.
+
+A statement may represent:
+
+- Author statement
+- Quoted speech
+- Numerical value
+- Caption
+- Title
+
+Statements preserve their original wording.
+
+---
+
+## Stage 5 — Claim Extraction
+
+Input
+
+Statements.
+
+Output
+
+Atomic claims.
+
+Purpose
+
+Convert statements into independently evaluable claims.
+
+One statement may generate zero, one or many claims.
+
+---
+
+## Stage 6 — Claim Classification
+
+Input
 
 Claims.
 
-### Output
+Output
 
-Claims linked with supporting or contradicting evidence.
+Typed claims.
 
-### Purpose
+Possible categories include:
 
-Collect all available evidence before evaluation.
+- Factual
+- Financial
+- Political
+- Scientific
+- Legal
+- Opinion
+- Prediction
+- Historical
+
+A claim may belong to multiple categories.
 
 ---
 
-## Stage 5 — Evaluation
+## Stage 7 — Evidence Collection
 
-### Input
+Input
+
+Typed claims.
+
+Output
+
+Claims linked to supporting and contradicting evidence.
+
+Purpose
+
+Collect all relevant evidence.
+
+Evidence never determines truth.
+
+---
+
+## Stage 8 — Evaluation
+
+Input
 
 Claims with evidence.
 
-### Output
+Output
 
-Confidence values.
+Confidence assessment.
 
-### Purpose
+Purpose
 
-Estimate how reliable each claim currently is.
+Estimate confidence using available evidence.
 
-Evaluation does not determine truth.
+Confidence is never certainty.
 
 ---
 
-## Stage 6 — Knowledge
+## Stage 9 — Knowledge
 
-### Input
+Input
 
 Evaluated claims.
 
-### Output
+Output
 
 Knowledge objects.
 
-### Purpose
+Purpose
 
 Represent the current best understanding.
 
@@ -158,33 +250,33 @@ Knowledge remains revisable.
 
 ---
 
-## Stage 7 — Analysis
+## Stage 10 — Analysis
 
-### Input
+Input
 
 Knowledge.
 
-### Output
+Output
 
-Patterns, relations and inconsistencies.
+Patterns, relationships and inconsistencies.
 
-### Purpose
+Purpose
 
 Generate higher-level understanding.
 
 ---
 
-## Stage 8 — Insight
+## Stage 11 — Insight
 
-### Input
+Input
 
 Analysis.
 
-### Output
+Output
 
-Human-readable observations.
+Human-readable insights.
 
-### Purpose
+Purpose
 
 Support human reasoning.
 
@@ -192,14 +284,16 @@ Insights never become decisions.
 
 ---
 
-# Design Principles
+# Core Principles
 
-The pipeline is deterministic.
+Documents are immutable.
 
-Every transformation should be explainable.
+Statements preserve original wording.
 
-Every output should be traceable.
+Claims are the primary processing unit.
 
-Every knowledge object should reference its originating claims.
+Evidence is linked to claims.
 
-The human remains responsible for all decisions.
+Knowledge is revisable.
+
+Humans remain responsible for decisions.

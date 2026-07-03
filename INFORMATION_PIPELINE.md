@@ -110,6 +110,8 @@ One statement may produce:
 - one claim
 - many claims
 
+Every extracted Claim must be assigned an Extraction Fidelity value at this stage, alongside its not-yet-evaluated content (see ADR-008, CONCEPTS.md). Extraction Fidelity is not Confidence — Confidence is assigned later, at Stage 8.
+
 Claims become independently evaluable.
 
 ---

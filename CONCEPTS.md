@@ -57,7 +57,7 @@ Evidence never establishes truth.
 
 ## Claim
 
-A single, atomic, evaluable proposition.
+A single, atomic, evaluable proposition, structured from one Statement (see ADR-004).
 
 A claim must represent exactly one evaluable proposition. A statement that bundles multiple propositions is not one claim — it must be decomposed into separate claims (see ADR-005).
 
@@ -66,13 +66,21 @@ Examples:
 - "Bitcoin reached a new all-time high."
 - "The Federal Reserve increased interest rates."
 
-Every claim must be traceable to one or more sources.
+Every claim must be traceable to its originating statement, document and source (see Provenance).
+
+Every claim must carry both an Extraction Fidelity value and a Confidence value (see Extraction Fidelity).
 
 A claim may be:
 
 - supported
 - disputed
 - unknown
+
+Claims may evolve as new evidence becomes available.
+
+Claims are independently evaluable.
+
+Claims are not knowledge.
 
 ---
 
@@ -252,25 +260,13 @@ Statements may contain zero, one or multiple claims.
 
 Statements are never modified.
 
+Statement atomicity is linguistic, not propositional: a Statement cannot be split without altering the original wording, but it may still bundle more than one evaluable proposition. This is why Statement does not qualify as the smallest meaningful processing unit — see ADR-005.
+
 Examples:
 
 "We generated $1.4 billion from crypto."
 
 "There is nothing illegal."
-
----
-
-## Claim
-
-A structured representation of one or more assertions extracted from statements.
-
-Claims are independently evaluable.
-
-Claims may be supported or contradicted by evidence.
-
-Claims may evolve as new evidence becomes available.
-
-Claims are not knowledge.
 
 ---
 

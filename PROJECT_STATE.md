@@ -29,6 +29,8 @@ No implementation has started.
 - Knowledge Lifecycle
 - AI Session Protocol
 - Smallest processing unit analysis (ADR-004 accepted, ADR-005, ADR-006)
+- Information Pipeline (INFORMATION_PIPELINE.md) — abstract stage definitions only, not yet walked through a real example
+- Traceability (TRACEABILITY.md)
 
 ---
 
@@ -54,7 +56,7 @@ Until these hold, further pure concept-refinement sessions should be treated wit
 
 ## Next Task
 
-Define the Information Processing Pipeline, using Claim as the atomic unit of evaluation (ADR-005). Pipeline design is implementation-adjacent — do not begin until explicitly scoped as an architecture task.
+INFORMATION_PIPELINE.md already defines the pipeline stages abstractly. What remains is to walk that pipeline manually against at least one real, non-trivial piece of Information end-to-end, per the Phase 1 Exit Criteria — a description on paper is not sufficient. This walkthrough is expected to surface gaps (e.g. Extraction Fidelity, Entity Resolution, Confidence Computation Model) that the abstract version could not.
 
 ---
 

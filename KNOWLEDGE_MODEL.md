@@ -105,11 +105,23 @@ Information is never automatically considered Knowledge.
 
 ---
 
+## Statement
+
+The smallest immutable linguistic unit extracted from Information, preserving original wording (see ADR-004).
+
+Every Statement originates from exactly one Document.
+
+A Statement may produce zero, one or multiple Claims.
+
+Statements are never modified.
+
+---
+
 ## Claim
 
 Represents one atomic proposition (see ADR-005).
 
-Every Claim originates from at least one Information object.
+Every Claim originates from exactly one Statement, which in turn originates from one Information object (see ADR-004).
 
 Every Claim carries both an Extraction Fidelity value and a Confidence value — these measure different things and are never merged (see ADR-008).
 

@@ -64,7 +64,7 @@ Output:
 
 Validated Information is transformed into structured concepts.
 
-Examples include:
+Per ADR-004, this happens in two steps: Validated Information is first decomposed into immutable Statements, which preserve original wording and provenance. Statements are then transformed into:
 
 - Claims
 - Entities

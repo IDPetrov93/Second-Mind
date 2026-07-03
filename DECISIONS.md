@@ -131,6 +131,8 @@ Entity fails evaluability. Identity carries no Confidence of its own.
 
 Relation fails atomicity. It is defined as a connection between two or more Entities or Claims, and is therefore structurally composite, not smaller than Claim.
 
+Statement fails both evaluability and atomicity in the relevant sense. Statement is atomic only linguistically — it cannot be split without altering original wording — but by its own definition "may contain zero, one or multiple claims," so it is not atomic propositionally. Statement also carries no Confidence or Extraction Fidelity of its own; only the Claims structured from it do. Statement is necessary as an immutable provenance anchor (ADR-004), but it is not the unit of evaluation.
+
 Claim satisfies all four criteria. A bare proposition without provenance is smaller still, but it cannot be evaluated and is therefore pre-architectural — it does not yet belong to KOS.
 
 Therefore the Claim is the smallest meaningful processing unit of KOS. Every Claim must represent exactly one atomic, evaluable proposition. A statement that bundles multiple propositions is not one Claim — it must be decomposed into separate Claims during Structuring (see KNOWLEDGE_LIFECYCLE.md, Stage 3).

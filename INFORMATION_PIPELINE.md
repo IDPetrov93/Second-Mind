@@ -6,6 +6,8 @@ Describe how observations become knowledge.
 
 The pipeline defines logical transformations only.
 
+Implementation details are intentionally excluded.
+
 ---
 
 Reality
@@ -64,13 +66,13 @@ Human
 
 Observe potentially relevant information.
 
-No interpretation.
+No interpretation occurs.
 
 ---
 
 ## Stage 2 — Document Registration
 
-Register immutable document.
+Register an immutable document.
 
 Assign:
 
@@ -80,37 +82,51 @@ Assign:
 - Language
 - Hash
 
+The original document must never be modified.
+
 ---
 
 ## Stage 3 — Normalization
 
-Convert into common internal representation.
+Convert the document into a common internal representation.
 
-No semantic changes.
+No semantic interpretation occurs.
 
 ---
 
 ## Stage 4 — Statement Extraction
 
-Extract immutable statements.
+Extract immutable Statements.
 
-Statements preserve original wording.
+Statements preserve the original wording.
 
-Statements maintain provenance.
+Statements preserve provenance.
+
+Statements are never modified.
 
 ---
 
 ## Stage 5 — Claim Extraction
 
-Convert statements into structured claims.
+Transform Statements into structured Claims.
 
-One statement may produce:
+One Statement may generate:
 
-- zero claims
-- one claim
-- many claims
+- zero Claims
+- one Claim
+- many Claims
 
-Every extracted Claim must be assigned an Extraction Fidelity value at this stage, alongside its not-yet-evaluated content (see ADR-008, CONCEPTS.md). Extraction Fidelity is not Confidence — Confidence is assigned later, at Stage 8.
+Claim Extraction is a **lossy transformation**.
+
+Every extracted Claim must reference its originating Statement.
+
+The original Statement must always be preserved to allow future re-extraction using improved extraction methods.
+
+Every Claim receives an initial **Extraction Fidelity** estimate.
+
+Extraction Fidelity measures how faithfully the Claim represents the originating Statement.
+
+Extraction Fidelity is **not** Confidence.
 
 Claims become independently evaluable.
 
@@ -118,54 +134,63 @@ Claims become independently evaluable.
 
 ## Stage 6 — Claim Classification
 
-Assign semantic categories.
+Assign one or more semantic categories.
 
 Examples:
 
 - Financial
 - Political
 - Scientific
-- Opinion
 - Legal
+- Opinion
 - Prediction
+- Historical
 
-Multiple categories are allowed.
+Classification guides later validation.
 
 ---
 
 ## Stage 7 — Evidence Collection
 
-Search supporting and contradicting evidence.
+Collect supporting and contradicting evidence.
 
 Evidence is never discarded.
+
+Evidence is attached to Claims.
 
 ---
 
 ## Stage 8 — Evaluation
 
-Estimate confidence.
+Estimate Confidence using currently available evidence.
 
 Evaluation never determines truth.
+
+Confidence may increase or decrease over time.
 
 ---
 
 ## Stage 9 — Knowledge Update
 
-Create or update knowledge objects.
+Create or update Knowledge Objects.
 
-Knowledge remains revisable.
+Knowledge always remains revisable.
+
+Knowledge never loses provenance.
 
 ---
 
 ## Stage 10 — Analysis
 
-Identify patterns, relations and inconsistencies.
+Discover patterns, relationships and inconsistencies across Knowledge.
 
 ---
 
 ## Stage 11 — Insight
 
-Generate observations useful for human reasoning.
+Generate human-readable observations.
+
+Insights support reasoning.
 
 Insights never become decisions.
 
@@ -177,8 +202,10 @@ Documents are immutable.
 
 Statements are immutable.
 
-Claims are evaluable.
+Claims are independently evaluable.
 
 Knowledge is revisable.
 
-Everything remains traceable.
+Every object preserves provenance.
+
+Every transformation is explainable.

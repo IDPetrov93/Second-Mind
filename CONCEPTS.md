@@ -86,13 +86,13 @@ Claims are not knowledge.
 
 ## Extraction Fidelity
 
-A measurable estimate of how accurately a Claim represents the Information it was extracted from.
+An estimate of how faithfully an extracted Claim represents its originating Statement.
 
-Extraction Fidelity is distinct from Confidence. Confidence estimates whether a Claim is reliable given evidence. Extraction Fidelity estimates whether a Claim is an accurate representation of its source at all — a precondition for Confidence to mean anything.
+Extraction Fidelity measures extraction quality only.
 
-Every Claim must carry both an Extraction Fidelity value and a Confidence value. They are never merged into one number.
+It does not evaluate whether the Claim is true.
 
-This concept exists because Structuring (see KNOWLEDGE_LIFECYCLE.md, Stage 3) is a transformation, not a copy, and transformations can be wrong independent of whether the underlying Information is true. See ADR-008.
+Extraction Fidelity and Confidence are independent concepts.
 
 ---
 

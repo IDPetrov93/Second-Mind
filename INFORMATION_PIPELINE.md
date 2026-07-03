@@ -16,7 +16,7 @@ Knowledge—not information—is the primary product of KOS.
 
 # Pipeline Overview
 
-```
+```text
 External World
        │
        ▼
@@ -48,8 +48,6 @@ Knowledge Synthesis
 
 # Stage 1 — Signal Detection
 
-KOS receives a Signal.
-
 A Signal is an indication that one or more Topics may require investigation.
 
 Possible Signal types include:
@@ -62,30 +60,28 @@ Possible Signal types include:
 - Research paper
 - Company blog
 - Financial report
-- Social media post
+- Social media
 - Video
 - Podcast
 - User input
 
-A Signal is not Knowledge.
-
-A Signal is not Evidence.
-
 A Signal is only a trigger.
+
+It is never Knowledge.
 
 ---
 
 # Stage 2 — Signal Validation
 
-Before KOS investigates a Topic, the Signal itself must be evaluated.
+KOS validates every Signal before investigation.
 
-Validation attempts to answer:
+Questions include:
 
-- Did the reported event actually occur?
+- Did the reported event occur?
+- Is the original source identifiable?
 - Is the Signal current?
-- Can the original source be identified?
-- Is the information presented in the correct context?
-- Do independent sources support the Signal?
+- Is the context preserved?
+- Can independent sources corroborate it?
 
 Possible outcomes:
 
@@ -96,65 +92,61 @@ Possible outcomes:
 
 Rejected Signals never modify Knowledge.
 
-Rejected Signals may still be archived for traceability.
-
 ---
 
 # Stage 3 — Topic Identification
 
-KOS determines which Topics may be affected.
+Determine which Topics are affected.
 
 One Signal may affect multiple Topics.
 
-If no suitable Topic exists, KOS may create one through the Bootstrap process defined in the Topic Model.
-
-Topics—not Signals—are the primary objects maintained by KOS.
+Topics—not Signals—are maintained by KOS.
 
 ---
 
 # Stage 4 — Knowledge Acquisition
 
-For every affected Topic, KOS performs investigation.
+Knowledge Acquisition is an investigative process.
 
-The objective is understanding.
+Its objective is not merely to verify a Signal.
 
-Not confirmation.
+Its objective is to expand the Signal into sufficient understanding of the affected Topic.
 
-Knowledge Acquisition may include:
+KOS actively searches for:
 
-- official documentation
+- official sources
 - independent reporting
 - historical context
-- quantitative data
 - supporting evidence
 - contradicting evidence
-- previous Knowledge Objects
+- quantitative data
 - related Topics
+- existing Knowledge
 
-KOS actively searches for missing context.
+Investigation continues until:
 
-Investigation continues until sufficient understanding is achieved or available evidence is exhausted.
+- sufficient understanding has been achieved;
+- no additional reliable information can be found; or
+- remaining uncertainty has been explicitly identified.
 
 ---
 
 # Stage 5 — Knowledge Validation
 
-Information collected during investigation is evaluated before entering the Knowledge Base.
+Collected information is evaluated before becoming Knowledge.
 
-Validation determines:
+Validation considers:
 
 - factual accuracy
-- consistency
 - provenance
+- consistency
 - supporting evidence
 - contradictory evidence
 - confidence
 
-Unsupported information does not become Knowledge.
+Unsupported information never becomes Knowledge.
 
-Conflicting information remains explicitly represented.
-
-Uncertainty is preserved.
+Conflicting evidence is preserved.
 
 ---
 
@@ -162,49 +154,43 @@ Uncertainty is preserved.
 
 Validated Knowledge is integrated into the appropriate Topic.
 
-Possible outcomes include:
+Possible outcomes:
 
-- new Knowledge Object
-- updated Knowledge Object
-- deprecated Knowledge
+- new Knowledge
+- updated Knowledge
 - corrected Knowledge
+- deprecated Knowledge
 - additional context
 - no meaningful change
 
-Knowledge evolves continuously.
-
-Historical continuity must be preserved.
+Historical continuity is preserved.
 
 ---
 
 # Stage 7 — Pattern Detection
 
-KOS continuously analyzes maintained Knowledge across Topics.
+KOS analyzes validated Knowledge across Topics.
 
-The objective is to identify recurring or emerging behaviors.
+Patterns emerge only from multiple validated Knowledge Objects.
 
-Patterns are created only when supported by multiple validated Knowledge Objects.
+Patterns describe recurring change.
 
-Patterns describe change over time.
-
-Patterns are never predictions.
+Patterns are not predictions.
 
 ---
 
 # Stage 8 — Knowledge Synthesis
 
-At any point, KOS should be able to produce an up-to-date understanding of a Topic.
+KOS produces an up-to-date understanding of a Topic.
 
-Knowledge Synthesis answers:
+Every synthesis should answer:
 
 - What is currently known?
-- What recently changed?
+- What changed?
 - Why does it matter?
 - What evidence supports this understanding?
 - Where does uncertainty remain?
 - Which Patterns are emerging?
-
-Knowledge Synthesis is the primary output of the KOS Core.
 
 Plugins consume synthesized Knowledge rather than raw Signals.
 
@@ -214,7 +200,7 @@ Plugins consume synthesized Knowledge rather than raw Signals.
 
 - Signals initiate investigation.
 - Topics accumulate Knowledge.
-- Knowledge evolves over time.
+- Knowledge evolves continuously.
 - Patterns emerge from validated Knowledge.
 - Outputs are generated from Knowledge, never directly from Signals.
 - Uncertainty is preserved whenever evidence is incomplete.

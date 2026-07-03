@@ -1,66 +1,52 @@
 # KOS — Knowledge Operating System
 
-KOS is an open-source project for building a modular system that transforms information into structured knowledge.
-
-The system does not replace human thinking.
-
-It improves human understanding.
-
----
-
 ## Mission
 
-Modern society has access to more information than ever before.
+KOS is an open-source AI Knowledge Operating System.
 
-The real challenge is no longer finding information.
+It does not collect news.
 
-The challenge is understanding it.
+It continuously builds and maintains understanding.
 
-KOS exists to collect, validate, organize, connect and analyze information so that humans can make better-informed decisions.
+Raw information enters as Signals, is investigated, validated, organized into Topics, and maintained as Knowledge.
 
----
-
-## Current Status
-
-Project Phase: Foundation
-
-The conceptual architecture is currently being designed.
-
-No production code has been written.
+Plugins consume synthesized Knowledge rather than raw information.
 
 ---
 
-## Design Principles
+## Core Architecture
 
-- Architecture before implementation.
-- Concepts before architecture.
-- Documentation before code.
-- Simplicity before complexity.
-- Human remains the final decision maker.
+```text
+External World
+      │
+      ▼
+Signals
+      │
+      ▼
+Knowledge
+      │
+      ▼
+Understanding
+      │
+      ▼
+Plugins
+```
 
 ---
 
 ## Documentation Order
 
-1. PROJECT_CONSTITUTION.md (includes founding principles)
+1. PROJECT_CONSTITUTION.md
 2. VISION.md
 3. ANTI_GOALS.md
 4. CONCEPTS.md
 5. KNOWLEDGE_THEORY.md
 6. KNOWLEDGE_MODEL.md
-7. INFORMATION_PIPELINE.md
-8. TRACEABILITY.md
-9. PROJECT_RULES.md
-10. AI_SESSION_PROTOCOL.md
-11. PROJECT_STATE.md
-12. DECISIONS.md
-
----
-
-## Goal
-
-Build a long-term, modular and open-source Knowledge Operating System that remains independent of any specific AI model or technology.
-
----
-
-KOS does not collect information. KOS continuously builds and maintains understanding.
+7. SIGNAL_MODEL.md
+8. TOPIC_MODEL.md
+9. INFORMATION_PIPELINE.md
+10. TRACEABILITY.md
+11. PROJECT_RULES.md
+12. AI_SESSION_PROTOCOL.md
+13. PROJECT_STATE.md
+14. DECISIONS.md

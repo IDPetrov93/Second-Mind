@@ -142,6 +142,8 @@ Every Claim originates from exactly one Statement, which in turn originates from
 
 Every Claim carries both an Extraction Fidelity value and a Confidence value — these measure different things and are never merged (see ADR-008).
 
+A monetary Claim about a fluctuating asset additionally carries a Valuation Basis and a Price Timestamp; Claims with differing Valuation Basis are not comparable for corroboration/dispute purposes (see ADR-023).
+
 A Claim may reference multiple Entities.
 
 A Claim may participate in multiple Relations.
@@ -190,6 +192,8 @@ Examples include:
 - Event → Event (sequence of related, discrete Events)
 
 Relations define the structure of the Knowledge Model.
+
+A Relation may only be created when explicitly stated in a Statement or supported by independent Evidence; mere co-occurrence (of entities, claims, or events in time) is not sufficient (see CONCEPTS.md, ADR-021).
 
 ---
 

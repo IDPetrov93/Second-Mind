@@ -359,7 +359,7 @@ Claims must be anchored to a specific Event; topical similarity does not imply s
 
 ## Status
 
-Proposed
+Accepted — was Proposed pending a resolution mechanism; that mechanism is now defined by ADR-020 (Primary-Document anchoring), so the original reason for Proposed status no longer applies.
 
 ## Reason
 
@@ -436,7 +436,7 @@ Event Resolution must distinguish punctual Events from evolving-process Events.
 
 ## Status
 
-Proposed
+Superseded by ADR-020 — the "evolving-process Event" framing proposed here was not adopted; ADR-020 resolves the same underlying problem via Primary-Document anchoring instead. Kept for record: the problem this ADR identified (Canada pipeline walkthrough) was real.
 
 ## Reason
 
@@ -553,7 +553,7 @@ Future Evidence may strengthen or create relationships.
 
 ---
 
-# ADR-011
+# ADR-022
 
 ## Title
 
@@ -597,3 +597,54 @@ The Validation Strategy is independent from Confidence.
 Evaluation becomes extensible.
 
 New Claim types may introduce new Validation Strategies without changing the processing pipeline.
+
+---
+
+# ADR-023
+
+## Title
+
+Monetary Claims About Fluctuating Assets Must Declare a Valuation Basis and a Price Timestamp
+
+## Status
+
+Accepted
+
+---
+
+## Context
+
+A dry run against a real signal (Metaplanet's Q2 2026 Bitcoin purchase, 2026-07-04) surfaced a numeric ambiguity that Claim decomposition (ADR-005) and Extraction Fidelity (ADR-006, ADR-019) do not cover.
+
+Across roughly fifteen Documents echoing the same Primary Document (Metaplanet's own disclosure), the phrase "worth $X" was used to describe at least two different, individually correct quantities for the same purchase:
+
+- Acquisition cost: what was actually paid (~$222–225M for the quarter, ~$4.07–4.09B cumulative).
+- Mark-to-market value: the same holdings valued at the Bitcoin price prevailing at the time of reporting (~$170M for the quarter, ~$2.6B cumulative).
+
+Both figures are accurate. They are not competing claims about the same fact — they are answers to two different questions, computed under different formulas and, implicitly, different price timestamps. Bitcoin's price moved roughly 20% within the quarter this purchase covers, which is why the two bases diverge so visibly here; the same ambiguity exists, less visibly, for any monetary Claim about a fluctuating asset.
+
+No existing Claim field records which basis or timestamp produced a stated monetary value. A system comparing such Claims for corroboration or dispute (Confidence, ADR-011's classification-driven Validation Strategy) risks flagging two truthful, non-contradictory Claims as disputed, or silently collapsing them into one misleading figure.
+
+This is distinct from ADR-019 (Extraction Fidelity — who/what a Claim is about) and from the open PROJECT_STATE question about values that change over time (a value needing a timestamp because it drifts). Here the issue is that the *formula itself* is ambiguous, not merely that the value is stale.
+
+---
+
+## Decision
+
+A monetary Claim about an asset whose price fluctuates shall declare, as part of the Claim, two additional attributes:
+
+- **Valuation Basis**: the formula used to produce the figure (e.g. Acquisition Cost, Mark-to-Market Value, Net-of-Income Cost). This is not an exhaustive enum defined here — new bases may appear — but every such Claim must name one.
+- **Price Timestamp**: the point in time the price used in the calculation refers to (which may differ from the Claim's or the Document's publication date).
+
+Two monetary Claims about the same Entity/Event with different Valuation Bases are not evidence of disagreement and shall not be treated as disputing one another. Confidence and corroboration logic shall only compare monetary Claims that share the same Valuation Basis.
+
+If a Document does not state which basis it used, the Claim shall be extracted with Valuation Basis marked unknown, rather than assumed.
+
+---
+
+## Consequences
+
+- Claim structure gains two attributes (Valuation Basis, Price Timestamp) for monetary Claims about fluctuating assets. This is an additive change; Claims about fixed-value facts are unaffected.
+- Confidence Computation Model (still an open gap) must, when eventually defined, treat Valuation Basis as a precondition for comparability, not an input to be averaged over.
+- Extraction from a single Document must record the basis if stated, and must not infer a basis the Document did not state.
+- This does not resolve which basis is "more correct" — both are legitimate; KOS represents both rather than picking one.

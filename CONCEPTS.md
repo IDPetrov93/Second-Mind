@@ -35,6 +35,8 @@ Every claim must be traceable to its originating statement, document and source 
 
 Every claim must carry both an Extraction Fidelity value and a Confidence value (see Extraction Fidelity).
 
+A monetary Claim about an asset whose price fluctuates must also carry a Valuation Basis (the formula used to produce the figure, e.g. Acquisition Cost vs. Mark-to-Market Value) and a Price Timestamp (the point in time the price used refers to). Two such Claims with different Valuation Bases are not in disagreement and must not be compared as if they were (see ADR-023).
+
 A claim may be:
 
 - supported
@@ -46,6 +48,33 @@ Claims may evolve as new evidence becomes available.
 Claims are independently evaluable.
 
 Claims are not knowledge.
+
+Every Claim has a Claim Classification (e.g. factual, prediction, warning, recommendation), which determines its Validation Strategy — see Validation Strategy, ADR-022.
+
+---
+
+## Claim Classification
+
+The category of proposition a Claim represents (e.g. factual, prediction, warning, recommendation).
+
+Claim Classification determines which Validation Strategy applies to a Claim (see ADR-022).
+
+How Claim Classification is actually assigned is not yet defined — see Pending Concepts.
+
+---
+
+## Validation Strategy
+
+The method by which a Claim is evaluated, determined by its Claim Classification.
+
+Examples:
+
+- Evidence Comparison
+- Future Outcome Tracking
+- Regulatory Verification
+- Scientific Verification
+
+Validation Strategy is independent from Confidence: it determines *how* a Claim is checked, not *how reliable* it currently is (see ADR-022).
 
 ---
 
@@ -97,6 +126,8 @@ Relations create structure from information.
 
 Every relation has a defined semantic type.
 
+A Relation may only be created when it is explicitly stated in a Statement, or supported by independent Evidence. Co-occurrence of entities, claims, or events in the same Statement or the same time window is not, by itself, sufficient grounds to create a Relation between them (see ADR-021).
+
 ---
 
 ## Context
@@ -118,6 +149,8 @@ A measurable estimate of how reliable a claim or derived knowledge is, based on 
 Confidence is assigned only to claims and to knowledge derived from them. A relation's reliability is derived from the confidence of the claims and entities it connects; relations do not carry independently assigned confidence (see ADR-006).
 
 Confidence must not treat multiple Documents that trace to the same origin through Attribution as independent evidence. Five outlets echoing one report is one account, not five (see ADR-014). How this is computed is not yet defined (see Pending Concepts: Confidence Computation Model).
+
+Confidence must not treat two monetary Claims with different Valuation Bases as corroborating or disputing each other; Valuation Basis is a precondition for comparability, not an input to average over (see ADR-023).
 
 Confidence is never certainty.
 
@@ -352,5 +385,6 @@ They will only be introduced when required by the architecture.
 - Confidence Computation Model (how a Confidence value is actually derived/aggregated is not yet defined anywhere; it must account for Attribution-linked echoes, see ADR-014)
 - Citation Fidelity Computation Model (how Citation Fidelity is actually measured is not yet defined — see ADR-016)
 - Source Trust Configuration (how much a given Source is trusted is niche-specific and client-supplied — deliberately not defined here; core only defines the Source/Attribution structure, not a fixed trust ranking or fixed source catalog)
+- Claim Classification Assignment (how a Claim is actually assigned its Claim Classification — e.g. factual vs. prediction vs. warning vs. recommendation — is not yet defined; ADR-022 requires the classification to exist and drive Validation Strategy, but not how it is produced)
 
 A concept may only be modified through an accepted Architecture Decision Record (ADR).

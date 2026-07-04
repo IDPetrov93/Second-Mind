@@ -38,6 +38,10 @@ No implementation has started.
 - Attribution Discovery named as unresolved (ADR-017, Proposed)
 - Event Resolution scope widened to cover punctual vs. evolving-process Events (ADR-018, Proposed), then fully resolved by anchoring Event identity to Primary Document (ADR-020, Accepted) — superseding ADR-018's framing
 - Extraction Fidelity scope clarified to cover entity/subject misattribution (ADR-019, from a fourth walkthrough — Binance/Philippines — that mostly validated prior fixes rather than finding a new hole)
+- Relation creation restricted to explicit statement or independent evidence; co-occurrence alone is insufficient (ADR-021, Accepted)
+- Validation Strategy and Claim Classification introduced — Claim validation is no longer one-size-fits-all (ADR-022, Accepted; renumbered from a duplicate ADR-011 during a documentation consistency pass — see Known Risks)
+- Monetary Claims about fluctuating assets must declare a Valuation Basis and a Price Timestamp; Claims with differing basis are not comparable for corroboration/dispute (ADR-023, Accepted, from a fifth walkthrough — Metaplanet Bitcoin purchase, 2026-07-04 — that found acquisition-cost and mark-to-market figures for the same purchase being treated as if they should agree). Propagated into CONCEPTS.md (Claim, Confidence) and KNOWLEDGE_MODEL.md (Claim).
+- Documentation consistency pass (2026-07-04): fixed a duplicate ADR-011 number (renumbered second instance to ADR-022), corrected ADR-018's status to reflect that ADR-020 supersedes it, promoted ADR-015 to Accepted now that ADR-020 resolves the mechanism it deferred, propagated ADR-021's Relation constraint into CONCEPTS.md and KNOWLEDGE_MODEL.md, defined Claim Classification/Validation Strategy in CONCEPTS.md (used by ADR-022 but never introduced there), and fixed stale/removed filenames in AI_SESSION_PROTOCOL.md's review checklist
 
 ---
 
@@ -147,4 +151,4 @@ Silent regression during restructuring — a restructuring pass can drop a conce
 
 ## Last Updated
 
-2026-07-03 (session 4 continued — Event Resolution resolved end-to-end, ADR-020; first of five Resolution-type gaps to reach Accepted)
+2026-07-04 (ADR-023 formalized from a Metaplanet dry run and propagated into CONCEPTS.md/KNOWLEDGE_MODEL.md. Earlier same day: documentation consistency pass — fixed a numbering collision and propagated ADR-021/ADR-022. Previous entry: 2026-07-03, session 4 continued — Event Resolution resolved end-to-end, ADR-020; first of five Resolution-type gaps to reach Accepted)

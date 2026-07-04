@@ -39,13 +39,14 @@ The AI must first establish the current project state.
 
 Review:
 
-- CURRENT_STATE.md
+- PROJECT_STATE.md
 - VISION.md
-- CONSTITUTION.md
-- FOUNDING_PRINCIPLES.md
+- PROJECT_CONSTITUTION.md
 - CONCEPTS.md
-- ADR index
+- DECISIONS.md (ADR index)
 - relevant architecture documents
+
+(FOUNDING_PRINCIPLES.md was merged into PROJECT_CONSTITUTION.md and removed — see ADR-007. Do not look for it.)
 
 If current state is unknown:
 
